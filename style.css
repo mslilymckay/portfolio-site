@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tenor+Sans&display=swap');
         
         :root {
             /* Strictly 4 Main Colors + Trans Flag Accents */
@@ -17,10 +17,15 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Open Sans', sans-serif;
             color: var(--charcoal);
             background-color: var(--white);
             overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Tan Mon Cherie', 'Tan Mon Cheri', 'Tenor Sans', sans-serif;
+            font-weight: normal !important; /* Force elegant normal weight */
         }
 
         /* Taller Trans Motif */
@@ -106,7 +111,7 @@
             z-index: 10;
         }
 
-        /* Hover-Expand Mechanic */
+        /* Click-Expand Mechanic (supports mobile/desktop click) */
         .expander {
             max-height: 0;
             overflow: hidden;
@@ -114,7 +119,7 @@
             opacity: 0;
         }
 
-        .timeline-card:hover .expander {
+        .timeline-card.active .expander {
             max-height: 350px;
             opacity: 1;
             margin-top: 1.5rem;
@@ -124,11 +129,21 @@
 
         .timeline-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
         }
 
         .timeline-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Chevron Animation */
+        .timeline-chevron {
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-card.active .timeline-chevron {
+            transform: rotate(180deg);
         }
 
         /* Animations */
@@ -167,5 +182,21 @@
             .timeline-line { left: 20px; }
             .timeline-item { width: 100% !important; padding-left: 50px !important; text-align: left !important; }
             .timeline-dot { left: 20px !important; }
-            .timeline-card:hover .expander { max-height: 500px; }
+            .timeline-card.active .expander { max-height: 500px; }
+        }
+
+        /* Hanging Indent for Bullet Points with Icons */
+        .timeline-card ul li,
+        [id^="mobile-desc-"] ul li,
+        #step-inner ul li {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .timeline-card ul li i,
+        [id^="mobile-desc-"] ul li i,
+        #step-inner ul li i {
+            margin-top: 0.25em;
+            margin-right: 0.5rem;
+            flex-shrink: 0;
         }
