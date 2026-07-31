@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini Interface Mastery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom utilities and highlight animations */
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .hl-active {
+            z-index: 40 !important;
+            box-shadow: 0 0 0 4px #3b82f6 !important;
+        }
+        .hl-active-subtle {
+            z-index: 40 !important;
+            box-shadow: 0 0 15px rgba(59,130,246,0.5), 0 0 0 4px #60a5fa !important;
+        }
+
+        .fade-in { animation: fadeIn 0.3s ease-in-out; }
+        .slide-in-top { animation: slideInTop 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .slide-in-bottom { animation: slideInBottom 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideInTop { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideInBottom { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="w-screen h-screen m-0 p-0 bg-[#0f0f11] font-sans selection:bg-blue-500/30 text-gray-100 overflow-hidden">
+
+    <!-- App Container (Fills iframe) -->
+    <div class="w-full h-full relative flex flex-col">
+        
+        <!-- Viewport Area -->
+        <div class="flex-1 overflow-y-auto overflow-x-hidden relative scrollbar-hide" id="app-root">
+            
+            <!-- Home View -->
+            <div id="view-home" class="view-panel flex flex-col items-center justify-center h-full p-6 text-center space-y-8 fade-in">
+                <div class="w-20 h-20 bg-blue-600 rounded-3xl flex items-center justify-center shadow-lg shadow-blue-500/30">
+                    <svg class="w-10 h-10 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg>
+                </div>
+                <div>
+                    <h1 class="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-3">Interface Mastery</h1>
+                    <p class="text-gray-400 text-sm">Learn to balance speed, reasoning depth, and output formatting to get the most out of the AI.</p>
+                </div>
+                <div class="w-full space-y-4 pt-4">
+                    <button onclick="startWalkthrough()" class="w-full bg-white text-gray-900 font-semibold py-4 rounded-2xl flex items-center justify-center space-x-2 hover:bg-gray-200 transition-colors">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        <span>Interactive Walkthrough</span>
+                    </button>
+                    <button onclick="startQuiz()" class="w-full bg-gray-800 text-white font-semibold py-4 rounded-2xl flex items-center justify-center space-x-2 border border-gray-700 hover:bg-gray-700 transition-colors">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                        <span>Knowledge Simulator</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mock Interface View (Used for Walkthrough & Simulator) -->
+            <div id="view-mock" class="view-panel hidden h-full flex flex-col bg-[#131314] text-white">
+                <div id="mock-overlay" class="absolute inset-0 bg-black/50 z-10 pointer-events-none hidden"></div>
+
+                <!-- Header & Picker -->
+                <div class="flex items-center justify-between p-4 relative">
+                    <button id="ui-picker-btn" onclick="handleMockAction('picker')" class="flex items-center space-x-2 p-2 rounded-xl transition-all duration-300 relative z-20 hover:bg-gray-800">
+                        <span class="font-medium text-lg flex items-center gap-2" id="ui-model-display">
+                            <!-- Injected by JS -->
+                        </span>
+                        <svg class="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-500 to-blue-500 z-20"></div>
+                </div>
+
+                <!-- Dropdown Menu -->
+                <div id="ui-model-menu" class="hidden absolute top-16 left-4 w-72 bg-[#1e1f20] border border-gray-700 rounded-2xl p-2 shadow-2xl transition-all z-50">
+                    <button onclick="handleMockAction('select_flash')" id="menu-flash-btn" class="w-full text-left p-3 rounded-xl flex items-center justify-between hover:bg-gray-700/50">
+                        <div class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-yellow-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            <div>
+                                <div class="font-medium">Gemini Flash</div>
+                                <div class="text-xs text-gray-400">Fast and versatile</div>
+                            </div>
+                        </div>
+                        <svg id="check-flash" class="w-5 h-5 text-blue-400 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                    </button>
+                    
+                    <button onclick="handleMockAction('select_pro')" id="menu-pro-btn" class="w-full text-left p-3 rounded-xl flex items-center justify-between hover:bg-gray-700/50 mt-1">
+                        <div class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg>
+                            <div>
+                                <div class="font-medium">Gemini Advanced</div>
+                                <div class="text-xs text-gray-400">Complex reasoning</div>
+                            </div>
+                        </div>
+                        <svg id="check-pro" class="w-5 h-5 text-blue-400 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                    </button>
+
+                    <div class="h-px bg-gray-700 my-2 mx-2"></div>
+
+                    <div class="p-3 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M9 13a4.5 4.5 0 0 0 3-4"/><path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/><path d="M3.477 10.896a4 4 0 0 1 .585-.396"/><path d="M6 18a4 4 0 0 1-1.967-.516"/><path d="M12 13h4"/><path d="M12 18h6a2 2 0 0 1 2 2v1"/><path d="M12 8h8"/><path d="M16 8V5a2 2 0 0 1 2-2"/><path d="M20 2v4h-4"/><path d="M20 22v-4h-4"/></svg>
+                            <div>
+                                <div class="font-medium text-sm">Deep Think</div>
+                                <div class="text-[10px] text-gray-400 leading-tight mt-0.5">Plans logic before answering</div>
+                            </div>
+                        </div>
+                        <button onclick="handleMockAction('toggle_think')" id="ui-think-toggle" class="w-12 h-6 rounded-full p-1 transition-colors bg-gray-600">
+                            <div id="ui-think-knob" class="w-4 h-4 rounded-full bg-white transition-transform translate-x-0"></div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Body Area -->
+                <div class="flex-1 flex flex-col items-center justify-center p-6 relative z-10 opacity-30">
+                    <svg class="w-12 h-12 text-blue-400 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg>
+                    <h2 class="text-2xl font-semibold mb-2">Hello</h2>
+                    <p id="mock-greeting" class="text-gray-400 text-center max-w-[250px]"></p>
+                </div>
+
+                <!-- Input Area -->
+                <div class="p-4 pb-6 relative z-20">
+                    <div class="max-w-3xl mx-auto flex flex-col space-y-3">
+                        
+                        <!-- Top Row Options -->
+                        <div class="flex justify-between items-center px-1">
+                            <div id="ui-think-indicator" class="flex items-center space-x-2 transition-opacity opacity-0">
+                                <svg class="w-4 h-4 text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M9 13a4.5 4.5 0 0 0 3-4"/><path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/><path d="M3.477 10.896a4 4 0 0 1 .585-.396"/><path d="M6 18a4 4 0 0 1-1.967-.516"/><path d="M12 13h4"/><path d="M12 18h6a2 2 0 0 1 2 2v1"/><path d="M12 8h8"/><path d="M16 8V5a2 2 0 0 1 2-2"/><path d="M20 2v4h-4"/><path d="M20 22v-4h-4"/></svg>
+                                <span class="text-xs font-medium text-purple-300 bg-purple-900/30 px-2 py-1 rounded-full border border-purple-800/50">Thinking Enabled</span>
+                            </div>
+
+                            <button id="ui-canvas-btn" onclick="handleMockAction('canvas')" class="flex items-center space-x-2 px-3 py-1.5 rounded-full transition-all duration-300 relative z-20 bg-gray-800/50 text-gray-400 hover:bg-gray-700/50">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                                <span id="ui-canvas-text" class="text-sm font-medium">Use Canvas</span>
+                            </button>
+                        </div>
+
+                        <!-- Main Input Box -->
+                        <div class="bg-[#1e1f20] rounded-[28px] p-2 flex items-end min-h-[64px] relative border border-gray-800 transition-colors">
+                            
+                            <!-- Context (+) Menu Overlay -->
+                            <div id="ui-plus-menu" class="hidden absolute bottom-[110%] left-0 w-64 bg-gray-800 border border-gray-700 rounded-2xl p-2 shadow-2xl transition-all z-40">
+                                <div class="flex flex-col space-y-1">
+                                    <button onclick="handleContextClick('Analyze photos or graphics for details.')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-700 text-left transition-colors">
+                                        <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                                        <span class="font-medium text-sm text-gray-200">Upload Image</span>
+                                    </button>
+                                    <button onclick="handleContextClick('Pull in context directly from your Docs, Sheets, or Drive.')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-700 text-left transition-colors">
+                                        <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+                                        <span class="font-medium text-sm text-gray-200">Google Workspace</span>
+                                    </button>
+                                    <button onclick="handleContextClick('Attach PDFs, code files, or text documents.')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-700 text-left transition-colors">
+                                        <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><line x1="10" x2="8" y1="9" y2="9"/></svg>
+                                        <span class="font-medium text-sm text-gray-200">Upload File</span>
+                                    </button>
+                                </div>
+                                <div id="context-desc-box" class="hidden mt-2 p-3 bg-blue-900/30 border border-blue-800/50 rounded-xl fade-in">
+                                    <p id="context-desc-text" class="text-xs text-blue-200 leading-snug"></p>
+                                </div>
+                            </div>
+
+                            <button id="ui-plus-btn" onclick="handleMockAction('plus')" class="p-2.5 rounded-full transition-all relative z-20 hover:bg-gray-700/50 flex-shrink-0">
+                                <svg id="ui-plus-icon" class="w-6 h-6 text-gray-400 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                            </button>
+                            
+                            <div id="ui-input-text" class="flex-1 px-2 py-2.5 text-sm text-gray-400 truncate min-w-0">Ask Gemini...</div>
+                            
+                            <div class="flex items-center gap-1 flex-shrink-0">
+                                <button class="p-2.5 rounded-full hover:bg-gray-700/50 transition-colors">
+                                    <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+                                </button>
+                                <button id="ui-send-btn" onclick="handleMockAction('send')" class="p-2.5 rounded-full bg-blue-600 transition-all relative z-20 hover:bg-blue-500">
+                                    <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Walkthrough Tooltip Overlay -->
+                <div id="walkthrough-tooltip" class="hidden absolute inset-x-4 z-50 bg-gray-800/95 backdrop-blur-md rounded-2xl p-5 shadow-2xl border border-gray-700">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 id="wt-title" class="font-semibold text-lg text-blue-400"></h3>
+                        <span id="wt-counter" class="text-xs font-medium text-gray-400 bg-gray-900 px-2 py-1 rounded-full"></span>
+                    </div>
+                    <p id="wt-desc" class="text-sm text-gray-200 mb-5 leading-relaxed"></p>
+                    
+                    <div id="wt-action-area">
+                        <!-- Dynamic Button or Pulse Text -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Scenario View -->
+            <div id="view-quiz-scenario" class="view-panel hidden flex flex-col h-full p-6 fade-in">
+                <div class="flex justify-between items-center mb-8 pt-4">
+                    <h2 id="qs-title" class="text-xl font-semibold"></h2>
+                    <span id="qs-counter" class="text-sm font-medium bg-gray-800 px-3 py-1 rounded-full border border-gray-700 text-gray-300"></span>
+                </div>
+                <div class="flex-1 flex flex-col justify-center pb-12">
+                    <div class="bg-gray-800/50 border border-gray-700 rounded-3xl p-6 shadow-lg">
+                        <svg class="w-8 h-8 text-blue-400 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><line x1="10" x2="8" y1="9" y2="9"/></svg>
+                        <h3 class="text-sm font-bold tracking-wider text-gray-400 uppercase mb-3">Your Task</h3>
+                        <p id="qs-text" class="text-lg leading-relaxed text-gray-100"></p>
+                    </div>
+                    <div class="mt-8 text-center px-4">
+                        <p class="text-sm text-gray-400 mb-2">Your goal:</p>
+                        <p class="text-sm text-gray-300 font-medium">Configure the optimal Model, Thinking Level, and Output Format for this specific task.</p>
+                    </div>
+                </div>
+                <button onclick="enterSimulator()" class="w-full bg-white text-gray-900 font-semibold py-4 rounded-xl flex items-center justify-center space-x-2 hover:bg-gray-200 transition-colors shadow-lg">
+                    <span>Enter Simulator</span>
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </button>
+            </div>
+
+            <!-- Quiz Feedback View -->
+            <div id="view-quiz-feedback" class="view-panel hidden flex flex-col h-full p-6 fade-in overflow-y-auto">
+                <div class="text-center mb-6 pt-4">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray-800 border-4 border-gray-700 mb-3 shadow-lg">
+                        <span id="qf-points" class="text-2xl font-bold text-white"></span>
+                    </div>
+                    <h2 class="text-xl font-semibold">Configuration Feedback</h2>
+                </div>
+                <div id="qf-rows" class="flex-1 space-y-1">
+                    <!-- Injected by JS -->
+                </div>
+                <button onclick="nextQuizStep()" id="qf-next-btn" class="w-full bg-white text-gray-900 font-semibold py-4 rounded-xl flex items-center justify-center space-x-2 mt-6 hover:bg-gray-200 transition-colors shadow-lg">
+                    <span id="qf-btn-text"></span>
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </button>
+            </div>
+
+            <!-- Results View -->
+            <div id="view-results" class="view-panel hidden flex flex-col items-center justify-center h-full p-6 text-center fade-in">
+                <div class="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center mb-6 border border-green-500/30">
+                    <svg class="w-12 h-12 text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                </div>
+                
+                <h2 class="text-3xl font-bold mb-2">Module Complete!</h2>
+                <p id="res-desc" class="text-gray-400 mb-8 max-w-[250px]"></p>
+
+                <div class="w-full flex justify-center mb-8">
+                    <div id="res-score-card" class="hidden w-full bg-gray-800 p-6 rounded-2xl border border-gray-700 flex flex-col items-center shadow-inner shadow-black/20">
+                        <svg class="w-8 h-8 text-green-400 mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                        <div class="flex items-baseline gap-1">
+                            <span id="res-score" class="text-4xl font-bold text-white"></span>
+                            <span id="res-max" class="text-xl text-gray-400"></span>
+                        </div>
+                        <span class="text-sm text-gray-400 uppercase tracking-wider mt-2">Accuracy Score</span>
+                    </div>
+                </div>
+
+                <button id="res-btn" class="w-full bg-gray-800 text-white font-semibold py-4 rounded-xl flex items-center justify-center space-x-2 border border-gray-700 hover:bg-gray-700 transition-colors">
+                    <svg id="res-btn-icon" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"></svg>
+                    <span id="res-btn-text"></span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // --- Data Configurations ---
+        const wtSteps = [
+            { id: 'intro', title: 'The Balancing Act', desc: 'Why not just use the smartest model for everything? Because efficiency matters. We balance Speed vs. Depth, and Chat vs. Workspace. Let\'s explore how.', target: 'next', position: 'bottom' },
+            { id: 'model_picker', title: 'Model Selection', desc: 'Let\'s change your AI engine. Tap the model selector at the top left to open the menu.', target: 'picker', position: 'bottom' },
+            { id: 'model_menu', title: 'Engines and Thinking', desc: 'Flash is for speed. Advanced is for heavy reasoning. Turn on "Deep Think" for math or complex logic. Toggle Deep Think ON, then select Gemini Advanced.', target: 'menu', position: 'bottom' },
+            { id: 'context', title: 'Add Context', desc: 'Need to analyze a document or connect a Google Workspace app? Tap the Plus (+) icon to open the attachment menu.', target: 'plus', position: 'top' },
+            { id: 'context_explore', title: 'Context Options', desc: 'Tap the options in the menu to see how they help the AI understand your task better. When you are ready, tap Continue.', target: 'next', position: 'top' },
+            { id: 'canvas', title: 'Output Format', desc: 'Standard chat is hard to edit. Tap the Canvas icon to generate a dedicated, editable workspace for long-form text or code.', target: 'canvas', position: 'top' },
+            { id: 'send', title: 'Ready to Go', desc: 'Your workspace is perfectly configured for a complex drafting task. Tap the Send button to submit your prompt!', target: 'send', position: 'top' }
+        ];
+
+        const quizData = [
+            {
+                scenario: "You need a quick summary of a 3-paragraph email you just received so you know if you need to reply today.",
+                promptPlaceholder: "Please summarize this email and highlight any urgent action items I need to reply to today...",
+                ideal: { model: 'flash', deepThink: false, canvas: false },
+                feedback: {
+                    model: "Gemini Flash is ideal here. It's built for rapid text processing and everyday tasks.",
+                    think: "Deep Thinking isn't needed. Summarizing an email doesn't require complex, multi-step logic.",
+                    canvas: "Standard Chat is perfect. You just need a quick read, not an editable document workspace."
+                }
+            },
+            {
+                scenario: "You want the AI to write a complex, multi-component React web application that you can easily edit, review, and copy.",
+                promptPlaceholder: "Write a complex, multi-component React application for a dashboard. Include state management and...",
+                ideal: { model: 'pro', deepThink: true, canvas: true },
+                feedback: {
+                    model: "Gemini Advanced (Pro) is required for heavy lifting and complex coding architecture.",
+                    think: "Deep Thinking helps the model plan the logic and component structure before writing code.",
+                    canvas: "Canvas is essential here. It gives you a dedicated workspace to view, edit, and copy the code safely."
+                }
+            },
+            {
+                scenario: "You are analyzing a comprehensive L&D (Learning and Development) training manual and need to brainstorm 5 potential quiz questions in a quick, conversational format.",
+                promptPlaceholder: "Based on the attached L&D training manual, brainstorm 5 potential quiz questions...",
+                ideal: { model: 'pro', deepThink: false, canvas: false },
+                feedback: {
+                    model: "Gemini Advanced is best for processing large, comprehensive manuals and maintaining deep context.",
+                    think: "Deep Thinking is overkill. Generating standard questions is creative, not a strict logic puzzle.",
+                    canvas: "Standard Chat is best. You requested a 'quick, conversational format', not a formal document."
+                }
+            }
+        ];
+
+        // --- Application State ---
+        let state = {
+            view: 'home',
+            mode: null, // 'walkthrough' or 'quiz' (determines app behavior definitively)
+            metrics: { startTime: null, endTime: null, clicks: 0, score: 0 },
+            ui: { model: 'flash', menuOpen: false, plusMenuOpen: false, deepThink: false, canvas: false },
+            wtStep: 0,
+            hasToggledThink: false,
+            selectedContextDesc: null,
+            quizStep: 0,
+            currentScore: { model: false, think: false, canvas: false }
+        };
+
+        // --- Core Functions ---
+        
+        // Track global clicks
+        document.addEventListener('click', () => { state.metrics.clicks++; });
+
+        function setView(viewName) {
+            state.view = viewName;
+            document.querySelectorAll('.view-panel').forEach(el => el.classList.add('hidden'));
+            const activeView = document.getElementById(`view-${viewName.replace('_', '-')}`);
+            if (activeView) activeView.classList.remove('hidden');
+            updateUI();
+        }
+
+        function resetSimulation() {
+            state.ui = { model: 'flash', menuOpen: false, plusMenuOpen: false, deepThink: false, canvas: false };
+            state.selectedContextDesc = null;
+        }
+
+        function startWalkthrough() {
+            state.mode = 'walkthrough';
+            state.metrics.startTime = Date.now();
+            resetSimulation();
+            state.wtStep = 0;
+            state.hasToggledThink = false;
+            setView('mock');
+        }
+
+        function startQuiz() {
+            state.mode = 'quiz';
+            state.metrics.startTime = Date.now();
+            state.metrics.score = 0;
+            state.quizStep = 0;
+            setView('quiz_scenario');
+        }
+
+        function enterSimulator() {
+            resetSimulation();
+            setView('mock');
+        }
+
+        function finishModule() {
+            state.metrics.endTime = Date.now();
+            setView('results');
+        }
+
+        function returnHome() {
+            state.mode = null;
+            state.metrics = { startTime: null, endTime: null, clicks: 0, score: 0 };
+            setView('home');
+        }
+
+        // --- Interaction Handlers ---
+
+        function isWalkthroughActive() {
+            return state.mode === 'walkthrough';
+        }
+
+        function handleContextClick(desc) {
+            if (state.view === 'mock' && isWalkthroughActive()) {
+                state.selectedContextDesc = desc;
+                updateUI();
+            } else if (state.view === 'mock') {
+                // Just toggle desc visually in quiz mode
+                state.selectedContextDesc = desc;
+                updateUI();
+            }
+        }
+
+        function handleMockAction(actionType) {
+            const isW = isWalkthroughActive();
+            
+            if (isW) {
+                const step = wtSteps[state.wtStep];
+                
+                if (step.id === 'intro' && actionType === 'next') {
+                    state.wtStep++;
+                } else if (step.id === 'model_picker' && actionType === 'picker') {
+                    state.ui.menuOpen = true;
+                    state.wtStep++;
+                } else if (step.id === 'model_menu') {
+                    if (actionType === 'toggle_think') {
+                        state.ui.deepThink = !state.ui.deepThink;
+                        state.hasToggledThink = true;
+                    } else if (actionType === 'select_pro') {
+                        if (!state.hasToggledThink) { alert("Try toggling Deep Think first!"); return; }
+                        state.ui.model = 'pro';
+                        state.ui.menuOpen = false;
+                        state.wtStep++;
+                    }
+                } else if (step.id === 'context' && actionType === 'plus') {
+                    state.ui.plusMenuOpen = true;
+                    state.wtStep++;
+                } else if (step.id === 'context_explore' && actionType === 'next') {
+                    state.ui.plusMenuOpen = false;
+                    state.selectedContextDesc = null;
+                    state.wtStep++;
+                } else if (step.id === 'canvas' && actionType === 'canvas') {
+                    state.ui.canvas = !state.ui.canvas;
+                    state.wtStep++;
+                } else if (step.id === 'send' && actionType === 'send') {
+                    finishModule();
+                    return;
+                }
+            } else {
+                // Free Interaction (Quiz Mode)
+                if (actionType === 'picker') state.ui.menuOpen = !state.ui.menuOpen;
+                if (actionType === 'select_flash') { state.ui.model = 'flash'; state.ui.menuOpen = false; }
+                if (actionType === 'select_pro') { state.ui.model = 'pro'; state.ui.menuOpen = false; }
+                if (actionType === 'toggle_think') state.ui.deepThink = !state.ui.deepThink;
+                if (actionType === 'plus') { state.ui.plusMenuOpen = !state.ui.plusMenuOpen; state.selectedContextDesc = null; }
+                if (actionType === 'canvas') state.ui.canvas = !state.ui.canvas;
+                
+                if (actionType === 'send') {
+                    evaluateQuiz();
+                    return;
+                }
+            }
+            updateUI();
+        }
+
+        // --- Quiz Logic ---
+        function evaluateQuiz() {
+            const q = quizData[state.quizStep];
+            const score = {
+                model: state.ui.model === q.ideal.model,
+                think: state.ui.deepThink === q.ideal.deepThink,
+                canvas: state.ui.canvas === q.ideal.canvas
+            };
+            
+            let points = 0;
+            if (score.model) points++;
+            if (score.think) points++;
+            if (score.canvas) points++;
+
+            state.currentScore = score;
+            state.metrics.score += points;
+            setView('quiz_feedback');
+        }
+
+        function nextQuizStep() {
+            if (state.quizStep < quizData.length - 1) {
+                state.quizStep++;
+                setView('quiz_scenario');
+            } else {
+                finishModule();
+            }
+        }
+
+        // --- Render / Update Engine ---
+
+        function updateUI() {
+            // --- Update Mock UI ---
+            if (state.view === 'mock') {
+                const isW = isWalkthroughActive();
+                
+                // Greeting text
+                document.getElementById('mock-greeting').innerText = isW ? "Follow the interactive guide to master the interface." : "Configure the settings below based on your scenario, then tap Send.";
+                
+                // Model Picker Display
+                const flashSVG = `<svg class="w-4 h-4 text-yellow-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`;
+                const proSVG = `<svg class="w-4 h-4 text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg>`;
+                document.getElementById('ui-model-display').innerHTML = (state.ui.model === 'flash' ? flashSVG : proSVG) + ` Gemini ${state.ui.model === 'flash' ? 'Flash' : 'Advanced'}`;
+                
+                // Menus
+                document.getElementById('ui-model-menu').classList.toggle('hidden', !state.ui.menuOpen);
+                document.getElementById('ui-plus-menu').classList.toggle('hidden', !state.ui.plusMenuOpen);
+                
+                // Menu selection highlights
+                document.getElementById('menu-flash-btn').classList.toggle('bg-gray-700/50', state.ui.model === 'flash');
+                document.getElementById('menu-pro-btn').classList.toggle('bg-gray-700/50', state.ui.model === 'pro');
+                document.getElementById('check-flash').classList.toggle('hidden', state.ui.model !== 'flash');
+                document.getElementById('check-pro').classList.toggle('hidden', state.ui.model !== 'pro');
+
+                // Think Toggle
+                const thinkToggle = document.getElementById('ui-think-toggle');
+                const thinkKnob = document.getElementById('ui-think-knob');
+                thinkToggle.classList.toggle('bg-blue-600', state.ui.deepThink);
+                thinkToggle.classList.toggle('bg-gray-600', !state.ui.deepThink);
+                thinkKnob.classList.toggle('translate-x-6', state.ui.deepThink);
+                thinkKnob.classList.toggle('translate-x-0', !state.ui.deepThink);
+                document.getElementById('ui-think-indicator').classList.toggle('opacity-100', state.ui.deepThink);
+                document.getElementById('ui-think-indicator').classList.toggle('opacity-0', !state.ui.deepThink);
+
+                // Canvas Toggle
+                const canvasBtn = document.getElementById('ui-canvas-btn');
+                document.getElementById('ui-canvas-text').innerText = state.ui.canvas ? 'Canvas Draft ON' : 'Use Canvas';
+                if(state.ui.canvas) {
+                    canvasBtn.classList.remove('bg-gray-800/50', 'text-gray-400');
+                    canvasBtn.classList.add('bg-blue-900/40', 'border', 'border-blue-700/50', 'text-blue-300');
+                } else {
+                    canvasBtn.classList.add('bg-gray-800/50', 'text-gray-400');
+                    canvasBtn.classList.remove('bg-blue-900/40', 'border', 'border-blue-700/50', 'text-blue-300');
+                }
+
+                // Plus Icon
+                document.getElementById('ui-plus-icon').classList.toggle('rotate-45', state.ui.plusMenuOpen);
+                document.getElementById('ui-plus-btn').classList.toggle('bg-gray-700', state.ui.plusMenuOpen);
+                
+                // Context Description
+                const descBox = document.getElementById('context-desc-box');
+                if(state.selectedContextDesc) {
+                    descBox.classList.remove('hidden');
+                    document.getElementById('context-desc-text').innerText = state.selectedContextDesc;
+                } else {
+                    descBox.classList.add('hidden');
+                }
+
+                // Update Input Text dynamically based on mode
+                const inputTextDiv = document.getElementById('ui-input-text');
+                if (isW) {
+                    inputTextDiv.innerText = "Ask Gemini...";
+                    inputTextDiv.classList.remove('text-gray-200');
+                    inputTextDiv.classList.add('text-gray-400');
+                } else {
+                    // Populate prompt for quiz scenarios
+                    inputTextDiv.innerText = quizData[state.quizStep].promptPlaceholder;
+                    inputTextDiv.classList.remove('text-gray-400');
+                    inputTextDiv.classList.add('text-gray-200');
+                }
+
+                // Walkthrough specific UI
+                document.getElementById('mock-overlay').classList.toggle('hidden', !isW);
+                const tooltip = document.getElementById('walkthrough-tooltip');
+                
+                // Reset highlights
+                ['ui-picker-btn', 'ui-model-menu', 'ui-plus-btn', 'ui-plus-menu', 'ui-canvas-btn', 'ui-send-btn'].forEach(id => {
+                    document.getElementById(id).classList.remove('hl-active', 'hl-active-subtle');
+                });
+
+                if (isW) {
+                    const step = wtSteps[state.wtStep];
+                    tooltip.classList.remove('hidden', 'top-20', 'slide-in-top', 'bottom-8', 'slide-in-bottom');
+                    
+                    if (step.position === 'top') {
+                        tooltip.classList.add('top-20', 'slide-in-top');
+                    } else {
+                        tooltip.classList.add('bottom-8', 'slide-in-bottom');
+                    }
+
+                    document.getElementById('wt-title').innerText = step.title;
+                    document.getElementById('wt-counter').innerText = `${state.wtStep + 1} / ${wtSteps.length}`;
+                    document.getElementById('wt-desc').innerText = step.desc;
+
+                    const actionArea = document.getElementById('wt-action-area');
+                    if (step.target === 'next') {
+                        actionArea.innerHTML = `<button onclick="handleMockAction('next')" class="w-full bg-blue-600 text-white font-medium py-3 rounded-xl flex items-center justify-center space-x-2 hover:bg-blue-700 transition-colors">
+                            <span>Continue</span><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>`;
+                    } else {
+                        actionArea.innerHTML = `<div class="text-xs text-center text-blue-300 animate-pulse font-medium">Tap the highlighted area to continue</div>`;
+                    }
+
+                    // Apply active highlight
+                    if (step.target === 'picker') document.getElementById('ui-picker-btn').classList.add('hl-active');
+                    if (step.target === 'menu') document.getElementById('ui-model-menu').classList.add('hl-active');
+                    if (step.target === 'plus') document.getElementById('ui-plus-btn').classList.add('hl-active');
+                    if (step.id === 'context_explore') document.getElementById('ui-plus-menu').classList.add('hl-active');
+                    if (step.target === 'canvas') document.getElementById('ui-canvas-btn').classList.add('hl-active');
+                    if (step.target === 'send') document.getElementById('ui-send-btn').classList.add('hl-active-subtle');
+                } else {
+                    tooltip.classList.add('hidden');
+                }
+            }
+
+            // --- Update Quiz Scenario UI ---
+            if (state.view === 'quiz_scenario') {
+                document.getElementById('qs-title').innerText = `Scenario ${state.quizStep + 1}`;
+                document.getElementById('qs-counter').innerText = `${state.quizStep + 1} of ${quizData.length}`;
+                document.getElementById('qs-text').innerText = quizData[state.quizStep].scenario;
+            }
+
+            // --- Update Quiz Feedback UI ---
+            if (state.view === 'quiz_feedback') {
+                const q = quizData[state.quizStep];
+                const s = state.currentScore;
+                const totalPoints = (s.model ? 1 : 0) + (s.think ? 1 : 0) + (s.canvas ? 1 : 0);
+                
+                document.getElementById('qf-points').innerText = `${totalPoints}/3`;
+                
+                const getRowHTML = (title, passed, text) => `
+                    <div class="p-4 rounded-2xl border ${passed ? 'bg-green-900/20 border-green-800/50' : 'bg-red-900/20 border-red-800/50'}">
+                        <div class="flex items-center gap-3 mb-1">
+                            ${passed 
+                                ? `<svg class="w-5 h-5 text-green-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>` 
+                                : `<svg class="w-5 h-5 text-red-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>`}
+                            <span class="font-semibold text-sm text-gray-200">${title}</span>
+                        </div>
+                        <p class="text-sm text-gray-400 pl-8 leading-snug">${text}</p>
+                    </div>`;
+
+                document.getElementById('qf-rows').innerHTML = 
+                    getRowHTML(`Model Selection (${q.ideal.model === 'flash' ? 'Flash' : 'Advanced'})`, s.model, q.feedback.model) +
+                    getRowHTML(`Thinking Level (${q.ideal.deepThink ? 'Deep Think' : 'Standard'})`, s.think, q.feedback.think) +
+                    getRowHTML(`Output Format (${q.ideal.canvas ? 'Canvas Draft' : 'Chat'})`, s.canvas, q.feedback.canvas);
+
+                document.getElementById('qf-btn-text').innerText = state.quizStep < quizData.length - 1 ? 'Next Scenario' : 'View Final Score';
+            }
+
+            // --- Update Results UI ---
+            if (state.view === 'results') {
+                const isQuiz = state.mode === 'quiz';
+                
+                const scoreCard = document.getElementById('res-score-card');
+                const resBtn = document.getElementById('res-btn');
+                const resBtnText = document.getElementById('res-btn-text');
+                const resBtnIcon = document.getElementById('res-btn-icon');
+
+                if (isQuiz) {
+                    document.getElementById('res-desc').innerText = "You've proven your mastery of the AI interface configuration.";
+                    
+                    scoreCard.classList.remove('hidden');
+                    document.getElementById('res-score').innerText = state.metrics.score;
+                    document.getElementById('res-max').innerText = `/ ${quizData.length * 3}`;
+                    
+                    resBtnText.innerText = 'Start Over';
+                    resBtnIcon.innerHTML = `<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/>`;
+                    resBtn.setAttribute('onclick', 'returnHome()');
+                } else {
+                    document.getElementById('res-desc').innerText = "You've successfully explored the interface dynamics. Ready to test your skills?";
+                    
+                    scoreCard.classList.add('hidden');
+                    
+                    resBtnText.innerText = 'Go to Quiz';
+                    resBtnIcon.innerHTML = `<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>`;
+                    resBtn.setAttribute('onclick', 'startQuiz()');
+                }
+            }
+        }
+
+        // Initialize view
+        updateUI();
+
+    </script>
+</body>
+</html>

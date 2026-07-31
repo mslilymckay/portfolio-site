@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            Micro-Learning Simulation Demo | Lily McKay
+        </title>
+        <meta name="description" content="Mobile Enablement Platform Case Study & App Demo by Lily McKay, Transformation Architect." />
+        <link rel="icon" type="image/png" href="icon.png" />
+        
+        <!-- CDNs -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+        
+        <!-- Style -->
+        <link rel="stylesheet" href="style.css" />
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Micro-Learning Simulation Demo | Lily McKay" />
+        <meta property="og:description" content="Explore a mobile micro-learning simulation experience built by AI." />
+        <meta property="og:image" content="icon.png" />
+    </head>
+    
+    <body>
+
+    <!-- Static Header -->
+        <header class="fixed top-0 left-0 w-full z-[60] bg-[#fdf2f8]/90 backdrop-blur-md shadow-sm m-0 p-0">
+        <div class="trans-motif w-full m-0 p-0"></div>
+        <nav class="grid grid-cols-2 items-center w-full px-6 md:px-12 py-3 relative">
+            <div class="flex items-center font-extrabold text-xl tracking-tighter text-[#be185d] h-full">
+                <a href="index.html" class="text-[#be185d] hover:text-pink-400" style="text-decoration: none;">LILY MCKAY</a>
+            </div>
+            <div class="flex justify-end items-center h-full w-full">
+            <div class="hidden md:flex gap-8 items-center font-bold text-[13px] tracking-widest text-[#1f2937]">
+                <a href="index.html" class="text-[#be185d] hover:text-pink-400 transition uppercase" style="text-decoration: none;">Home</a>
+                
+                <!-- Overview Dropdown -->
+                <div class="relative group py-2">
+                    <button class="flex items-center gap-1.5 text-[#be185d] hover:text-pink-400 transition uppercase font-bold text-[13px] tracking-widest" style="background: none; border: none; padding: 0;">
+                        Overview <i class="fas fa-chevron-down text-[9px] transition-transform duration-300 group-hover:rotate-180"></i>
+                    </button>
+                    <div class="absolute top-full left-0 hidden group-hover:block pt-2 z-50">
+                        <div class="w-48 bg-white border border-gray-100 rounded-xl shadow-xl py-2">
+                            <a href="index.html#identity" class="block px-4 py-2 text-[11px] text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d] transition font-bold uppercase tracking-wider" style="text-decoration: none;">Identity</a>
+                            <a href="index.html#enablement" class="block px-4 py-2 text-[11px] text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d] transition font-bold uppercase tracking-wider" style="text-decoration: none;">Framework</a>
+                            <a href="index.html#experience" class="block px-4 py-2 text-[11px] text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d] transition font-bold uppercase tracking-wider" style="text-decoration: none;">Experience</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Dropdown (Active) -->
+                <div class="relative group py-2">
+                    <button class="flex items-center gap-1.5 text-pink-400 transition uppercase font-bold text-[13px] tracking-widest" style="background: none; border: none; padding: 0;">
+                        Portfolio <i class="fas fa-chevron-down text-[9px] transition-transform duration-300 group-hover:rotate-180"></i>
+                    </button>
+                    <div class="absolute top-full left-0 hidden group-hover:block pt-2 z-50">
+                        <div class="w-64 bg-white border border-gray-100 rounded-xl shadow-xl py-2">
+                            <a href="the-stacks-demo.html" class="block px-4 py-2 text-[11px] text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d] transition font-bold uppercase tracking-wider" style="text-decoration: none;">Book-Tracking PWA</a>
+                            <a href="micro-simulation-demo.html" class="block px-4 py-2 text-[11px] bg-[#fdf2f8] text-[#be185d] hover:bg-[#fdf2f8] hover:text-[#be185d] transition font-bold uppercase tracking-wider" style="text-decoration: none;">Micro-Learning Simulation</a>
+                            <a href="news-case-study.html" class="block px-4 py-2 text-[11px] text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d] transition font-bold uppercase tracking-wider" style="text-decoration: none;">AI Workflow Automation</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="index.html#contact" class="bg-[#be185d] text-white px-6 py-2 rounded-lg hover:brightness-110 transition uppercase" style="text-decoration: none;">Contact</a>
+            </div>
+            <button onclick="toggleMenu()" class="md:hidden flex items-center justify-center text-[#be185d] focus:outline-none">
+                <i id="menu-icon" class="fas fa-bars text-2xl leading-none m-0 p-0"></i>
+            </button>
+            </div>
+            <!-- Hamburger Menu -->
+            <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 flex-col items-start px-6 py-8 space-y-6 md:hidden z-[70]">
+                <a href="index.html" onclick="toggleMenu()" class="block w-full text-[#be185d] font-bold text-lg tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">Home</a>
+                
+                <!-- Overview Section on Mobile -->
+                <div class="w-full space-y-2">
+                    <span class="block w-full text-[#1f2937] font-bold text-xs uppercase tracking-wider opacity-60">Overview</span>
+                    <div class="pl-4 space-y-2 border-l-2 border-pink-100">
+                        <a href="index.html#identity" onclick="toggleMenu()" class="block w-full text-[#be185d] font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">Identity</a>
+                        <a href="index.html#enablement" onclick="toggleMenu()" class="block w-full text-[#be185d] font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">Framework</a>
+                        <a href="index.html#experience" onclick="toggleMenu()" class="block w-full text-[#be185d] font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">Experience</a>
+                    </div>
+                </div>
+
+                <!-- Portfolio Section on Mobile (Active) -->
+                <div class="w-full space-y-2">
+                    <span class="block w-full text-pink-400 font-bold text-xs uppercase tracking-wider">Portfolio</span>
+                    <div class="pl-4 space-y-2 border-l-2 border-pink-300">
+                        <a href="the-stacks-demo.html" onclick="toggleMenu()" class="block w-full text-[#be185d] font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">Book-Tracking PWA</a>
+                        <a href="micro-simulation-demo.html" onclick="toggleMenu()" class="block w-full text-pink-400 font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">Micro-Learning Simulation</a>
+                        <a href="news-case-study.html" onclick="toggleMenu()" class="block w-full text-[#be185d] font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">AI Workflow Automation</a>
+                    </div>
+                </div>
+
+                <a href="index.html#contact" onclick="toggleMenu()" class="inline-block bg-[#be185d] text-white px-8 py-3 rounded-lg font-bold text-lg tracking-widest uppercase hover:brightness-110 mt-2" style="text-decoration: none;">Contact</a>
+            </div>
+        </nav>
+        </header>
+
+    <!-- Lighter Hero Section -->
+        <section class="bg-[#fdf2f8] pt-36 pb-16 px-6 border-b border-pink-100/50">
+            <div class="max-w-4xl mx-auto text-center">
+                <span class="text-[#be185d] font-bold tracking-[0.2em] text-xs uppercase opacity-70">
+                    Microlearning & Technology Enablement
+                </span>
+                <h1 class="text-4xl md:text-6xl font-black mt-4 mb-6 text-[#1f2937]">
+                    Rapid Software Simulation Development
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 font-light max-w-2xl mx-auto leading-relaxed">
+                    Using generative AI to develop custom microlearning apps with interactive walkthroughs and scenario-based simulations.
+                </p>
+            </div>
+        </section>
+
+    <!-- Case Study & Live App Section -->
+        <section class="py-20 px-6 bg-white">
+            <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Phone Mockup Container (5 cols on desktop) -->
+                <div class="lg:col-span-5 flex justify-center reveal">
+                    <div class="relative border-gray-800 bg-gray-800 border-[12px] rounded-[2.5rem] h-[760px] w-[375px] shadow-2xl overflow-hidden flex-shrink-0">
+                        <!-- Speaker / Camera notch notch -->
+                        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 h-5 w-32 bg-gray-800 rounded-b-xl z-20 flex justify-center items-center">
+                            <div class="w-12 h-1 bg-gray-700 rounded-full mb-1"></div>
+                        </div>
+
+                        <!-- Gemini Interface Mastery Module -->
+                        <div class="w-full h-full bg-white rounded-[1.8rem] overflow-hidden relative">
+                            <iframe src="interface_mastery.html" class="w-full h-full border-none z-10 relative"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study Details (7 cols on desktop) -->
+                <div class="lg:col-span-7 space-y-10 reveal">
+                    <div>
+                        <h2 class="text-3xl font-black text-[#1f2937] mb-4">
+                            About this Project
+                        </h2>
+                        <div class="w-20 h-1 bg-[#be185d] mb-6"></div>
+                        <p class="text-gray-600 leading-relaxed text-lg mb-4">
+                            When I used to develop blended learning experiences for complex technical configurations and administrator onboarding, I loved using tools like Captivate and Articulate to make interactive software simulations. This was a low-stakes way for learners to see the tool in action and actually get their hands on it without risking any real-world consequences. Developing these simulations was time-consuming at first, but nevertheless delightful. Maintenance, on the other hand, was perpetually time consuming, not to mention editing and creation usally stayed with one or two people based on both licensing costs and steep learning curves. For this project, I wanted to see if I could use generative AI to create a similar simulation experience with lower overhead.
+                        </p>
+                    </div>
+
+                    <!-- Storytelling Cards -->
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="bg-[#f3f4f6] p-6 rounded-2xl border border-gray-100">
+                            <h4 class="font-bold text-lg text-[#1f2937] mb-2 uppercase tracking-wide text-xs text-[#be185d]">
+                                The Challenge
+                            </h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                Software simulations can be invaluable for learning, but they are often expensive to create and maintain. We needed a way to create custom microlearning simulations at a fraction of the cost without sacrificing quality or interactivity.
+                            </p>
+                        </div>
+                        <div class="bg-[#f3f4f6] p-6 rounded-2xl border border-gray-100">
+                            <h4 class="font-bold text-lg text-[#1f2937] mb-2 uppercase tracking-wide text-xs text-[#be185d]">
+                                The Solution
+                            </h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                A mobile-first micro-enablement application that can be served on its own or embedded in other e-learning projects, such as an Articulate Rise course using the Custom HTML feature.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Install CTA Drawer Section -->
+                    <div class="border border-[#be185d]/20 bg-[#fdf2f8]/50 p-8 rounded-3xl flex flex-col md:flex-row items-center gap-8 shadow-sm">
+                        <div class="flex-1 space-y-3">
+                            <h3 class="text-2xl font-black text-[#1f2937]">
+                                Check Out the Embedded Experience
+                            </h3>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                The demo above is a lightweight standalone HTML application that can be embedded on an intranet page, in an e-learning course, or even within an app's help documentation. See what it looks like in an Articulate Rise course by clicking the button below. You can also scan the QR code to see the standalone app on your mobile device for a more native experience.
+                            </p>
+                            <!-- Mobile Direct Link (hidden on desktop) -->
+                            <a href="interface_mastery.html" target="_blank" class="inline-block md:hidden bg-[#be185d] text-white font-bold text-sm uppercase tracking-wider px-6 py-3 rounded-xl hover:brightness-110 transition shadow-md mt-2">
+                                <i class="fas fa-mobile-screen-button mr-2"></i> View on Mobile
+                            </a>
+                        </div>
+                        
+                        <!-- Desktop QR Code (hidden on mobile) -->
+                        <div class="hidden md:flex flex-col items-center bg-white p-4 border border-pink-100 rounded-2xl shadow-sm flex-shrink-0">
+                            <!-- SVG QR Code Mockup pointing to PWA -->
+                            <svg class="w-28 h-28 text-gray-800" viewBox="0 0 100 100" fill="currentColor">
+                              <rect x="0" y="0" width="30" height="30" />
+                              <rect x="5" y="5" width="20" height="20" fill="white" />
+                              <rect x="10" y="10" width="10" height="10" />
+                              <rect x="70" y="0" width="30" height="30" />
+                              <rect x="75" y="5" width="20" height="20" fill="white" />
+                              <rect x="80" y="10" width="10" height="10" />
+                              <rect x="0" y="70" width="30" height="30" />
+                              <rect x="5" y="75" width="20" height="20" fill="white" />
+                              <rect x="10" y="80" width="10" height="10" />
+                              <rect x="35" y="5" width="5" height="5" /><rect x="45" y="5" width="5" height="5" /><rect x="60" y="5" width="5" height="5" />
+                              <rect x="40" y="10" width="5" height="5" /><rect x="50" y="10" width="5" height="5" />
+                              <rect x="55" y="15" width="5" height="5" /><rect x="65" y="15" width="5" height="5" />
+                              <rect x="35" y="20" width="5" height="5" /><rect x="45" y="20" width="5" height="5" />
+                              <rect x="50" y="25" width="5" height="5" /><rect x="60" y="25" width="5" height="5" />
+                              <rect x="5" y="35" width="5" height="5" /><rect x="15" y="35" width="5" height="5" /><rect x="25" y="35" width="5" height="5" />
+                              <rect x="30" y="40" width="5" height="5" /><rect x="40" y="40" width="5" height="5" /><rect x="55" y="40" width="5" height="5" />
+                              <rect x="75" y="35" width="5" height="5" /><rect x="85" y="35" width="5" height="5" /><rect x="90" y="40" width="5" height="5" />
+                              <rect x="60" y="45" width="5" height="5" /><rect x="80" y="45" width="5" height="5" />
+                              <rect x="35" y="50" width="5" height="5" /><rect x="45" y="50" width="5" height="5" />
+                              <rect x="50" y="55" width="5" height="5" /><rect x="65" y="55" width="5" height="5" />
+                              <rect x="5" y="60" width="5" height="5" /><rect x="20" y="60" width="5" height="5" /><rect x="30" y="60" width="5" height="5" />
+                              <rect x="75" y="60" width="5" height="5" /><rect x="85" y="60" width="5" height="5" />
+                              <rect x="35" y="75" width="5" height="5" /><rect x="45" y="75" width="5" height="5" /><rect x="55" y="75" width="5" height="5" /><rect x="65" y="75" width="5" height="5" />
+                              <rect x="40" y="80" width="5" height="5" /><rect x="50" y="80" width="5" height="5" /><rect x="60" y="80" width="5" height="5" />
+                            </svg>
+                            <span class="text-[9px] text-[#be185d] font-bold mt-2 uppercase tracking-widest text-center">
+                                Scan to Open on Mobile
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    <!-- Footer -->
+        <footer class="bg-white py-12 px-6 border-t border-gray-100">
+            <div class="text-center text-gray-400 text-xs font-bold uppercase tracking-[0.2em] flex flex-col sm:flex-row items-center justify-center gap-3 leading-relaxed">
+                <span class="flex items-center gap-2"><i class="fas fa-copyright text-pink-300"></i> 2026 Lily McKay.</span>
+                <span class="hidden sm:inline text-pink-300">•</span>
+                <span class="flex items-center gap-2">Built with Gemini. <i class="fas fa-wand-magic-sparkles text-pink-300"></i></span>
+            </div>
+        </footer>
+
+        <!-- Back to Top Button -->
+        <button id="backToTop" onclick="scrollToTop()" class="fixed bottom-8 right-8 bg-[#be185d] text-white p-4 rounded-full shadow-2xl hover:brightness-110 transition-all duration-300 z-50 flex items-center justify-center w-12 h-12">
+            <i class="fas fa-chevron-up text-lg"></i>
+        </button>
+
+    <!-- Scripts -->
+        <script src="script.js"></script>
+    </body>
+</html>

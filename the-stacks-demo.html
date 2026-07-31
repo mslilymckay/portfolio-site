@@ -3,7 +3,9 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Mobile App Demo | Lily McKay</title>
+        <title>
+            The Stacks Demo | Lily McKay
+        </title>
         <meta name="description" content="Mobile Enablement Platform Case Study & App Demo by Lily McKay, Transformation Architect." />
         <link rel="icon" type="image/png" href="icon.png" />
         
@@ -16,8 +18,8 @@
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Mobile App Demo | Lily McKay" />
-        <meta property="og:description" content="Explore The Stacks Demo - a mobile micro-enablement PWA experience." />
+        <meta property="og:title" content="The Stacks Demo | Lily McKay" />
+        <meta property="og:description" content="Explore The Stacks Demo - a lightweight book-tracking PWA." />
         <meta property="og:image" content="icon.png" />
     </head>
     
@@ -33,8 +35,35 @@
             <div class="flex justify-end items-center h-full w-full">
             <div class="hidden md:flex gap-8 items-center font-bold text-[13px] tracking-widest text-[#1f2937]">
                 <a href="index.html" class="text-[#be185d] hover:text-pink-400 transition uppercase" style="text-decoration: none;">Home</a>
-                <a href="mobile-app-demo.html" class="text-pink-400 transition uppercase" style="text-decoration: none;">App Demo</a>
-                <a href="trio-case-studies.html" class="text-[#be185d] hover:text-pink-400 transition uppercase" style="text-decoration: none;">POC Assets</a>
+                
+                <!-- Overview Dropdown -->
+                <div class="relative group py-2">
+                    <button class="flex items-center gap-1.5 text-[#be185d] hover:text-pink-400 transition uppercase font-bold text-[13px] tracking-widest" style="background: none; border: none; padding: 0;">
+                        Overview <i class="fas fa-chevron-down text-[9px] transition-transform duration-300 group-hover:rotate-180"></i>
+                    </button>
+                    <div class="absolute top-full left-0 hidden group-hover:block pt-2 z-50">
+                        <div class="w-48 bg-white border border-gray-100 rounded-xl shadow-xl py-2">
+                            <a href="index.html#identity" class="block px-4 py-2 text-[11px] text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d] transition font-bold uppercase tracking-wider" style="text-decoration: none;">Identity</a>
+                            <a href="index.html#enablement" class="block px-4 py-2 text-[11px] text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d] transition font-bold uppercase tracking-wider" style="text-decoration: none;">Framework</a>
+                            <a href="index.html#experience" class="block px-4 py-2 text-[11px] text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d] transition font-bold uppercase tracking-wider" style="text-decoration: none;">Experience</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Dropdown (Active) -->
+                <div class="relative group py-2">
+                    <button class="flex items-center gap-1.5 text-pink-400 transition uppercase font-bold text-[13px] tracking-widest" style="background: none; border: none; padding: 0;">
+                        Portfolio <i class="fas fa-chevron-down text-[9px] transition-transform duration-300 group-hover:rotate-180"></i>
+                    </button>
+                    <div class="absolute top-full left-0 hidden group-hover:block pt-2 z-50">
+                        <div class="w-64 bg-white border border-gray-100 rounded-xl shadow-xl py-2">
+                            <a href="the-stacks-demo.html" class="block px-4 py-2 text-[11px] bg-[#fdf2f8] text-[#be185d] hover:bg-[#fdf2f8] hover:text-[#be185d] transition font-bold uppercase tracking-wider" style="text-decoration: none;">Book-Tracking PWA</a>
+                            <a href="micro-simulation-demo.html" class="block px-4 py-2 text-[11px] text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d] transition font-bold uppercase tracking-wider" style="text-decoration: none;">Micro-Learning Simulation</a>
+                            <a href="news-case-study.html" class="block px-4 py-2 text-[11px] text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d] transition font-bold uppercase tracking-wider" style="text-decoration: none;">AI Workflow Automation</a>
+                        </div>
+                    </div>
+                </div>
+
                 <a href="index.html#contact" class="bg-[#be185d] text-white px-6 py-2 rounded-lg hover:brightness-110 transition uppercase" style="text-decoration: none;">Contact</a>
             </div>
             <button onclick="toggleMenu()" class="md:hidden flex items-center justify-center text-[#be185d] focus:outline-none">
@@ -42,10 +71,29 @@
             </button>
             </div>
             <!-- Hamburger Menu -->
-            <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 flex-col items-start px-6 py-8 space-y-8 md:hidden z-[70]">
+            <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 flex-col items-start px-6 py-8 space-y-6 md:hidden z-[70]">
                 <a href="index.html" onclick="toggleMenu()" class="block w-full text-[#be185d] font-bold text-lg tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">Home</a>
-                <a href="mobile-app-demo.html" onclick="toggleMenu()" class="block w-full text-pink-400 font-bold text-lg tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">App Demo</a>
-                <a href="trio-case-studies.html" onclick="toggleMenu()" class="block w-full text-[#be185d] font-bold text-lg tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">POC Assets</a>
+                
+                <!-- Overview Section on Mobile -->
+                <div class="w-full space-y-2">
+                    <span class="block w-full text-[#1f2937] font-bold text-xs uppercase tracking-wider opacity-60">Overview</span>
+                    <div class="pl-4 space-y-2 border-l-2 border-pink-100">
+                        <a href="index.html#identity" onclick="toggleMenu()" class="block w-full text-[#be185d] font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">Identity</a>
+                        <a href="index.html#enablement" onclick="toggleMenu()" class="block w-full text-[#be185d] font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">Framework</a>
+                        <a href="index.html#experience" onclick="toggleMenu()" class="block w-full text-[#be185d] font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">Experience</a>
+                    </div>
+                </div>
+
+                <!-- Portfolio Section on Mobile (Active) -->
+                <div class="w-full space-y-2">
+                    <span class="block w-full text-pink-400 font-bold text-xs uppercase tracking-wider">Portfolio</span>
+                    <div class="pl-4 space-y-2 border-l-2 border-pink-300">
+                        <a href="the-stacks-demo.html" onclick="toggleMenu()" class="block w-full text-pink-400 font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">Book-Tracking PWA</a>
+                        <a href="micro-simulation-demo.html" onclick="toggleMenu()" class="block w-full text-[#be185d] font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">Micro-Learning Simulation</a>
+                        <a href="news-case-study.html" onclick="toggleMenu()" class="block w-full text-[#be185d] font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">AI Workflow Automation</a>
+                    </div>
+                </div>
+
                 <a href="index.html#contact" onclick="toggleMenu()" class="inline-block bg-[#be185d] text-white px-8 py-3 rounded-lg font-bold text-lg tracking-widest uppercase hover:brightness-110 mt-2" style="text-decoration: none;">Contact</a>
             </div>
         </nav>
@@ -54,10 +102,12 @@
     <!-- Lighter Hero Section -->
         <section class="bg-[#fdf2f8] pt-36 pb-16 px-6 border-b border-pink-100/50">
             <div class="max-w-4xl mx-auto text-center">
-                <span class="text-[#be185d] font-bold tracking-[0.2em] text-xs uppercase opacity-70">Interactive Demo</span>
-                <h1 class="text-4xl md:text-6xl font-black mt-4 mb-6 text-[#1f2937]">Mobile Enablement Platform</h1>
+                <span class="text-[#be185d] font-bold tracking-[0.2em] text-xs uppercase opacity-70">
+                    Web App Case Study & Demo
+                </span>
+                <h1 class="text-4xl md:text-6xl font-black mt-4 mb-6 text-[#1f2937]">Mobile Book Tracking in <i>The&nbsp;Stacks</i></h1>
                 <p class="text-lg md:text-xl text-gray-600 font-light max-w-2xl mx-auto leading-relaxed">
-                    Experiencing the next generation of deskless workforce enablement. Interact with the live application mock below.
+                    Explore a lightweight Progressive Web App (PWA) designed to help users track their reading habits, manage book collections, and discover new titles. This demo showcases a bespoke mobile-first user experience designed for coziness and data storytelling.
                 </p>
             </div>
         </section>
@@ -82,25 +132,29 @@
                 <!-- Case Study Details (7 cols on desktop) -->
                 <div class="md:col-span-7 space-y-10 reveal">
                     <div>
-                        <h2 class="text-3xl font-black text-[#1f2937] mb-4">Case Study Narrative</h2>
+                        <h2 class="text-3xl font-black text-[#1f2937] mb-4">
+                            About this Project
+                        </h2>
                         <div class="w-20 h-1 bg-[#be185d] mb-6"></div>
                         <p class="text-gray-600 leading-relaxed text-lg mb-4">
-                            Deskless and frontline employees are historically underserved when it comes to organizational alignment and digital enablement. This platform serves as a modern Progressive Web App (PWA) designed to inject lightweight training, performance loops, and messaging assets straight to employees' personal devices.
+                            My wife needed to replace her ancient book-tracking app, but nothing she could find met her needs. So I built a Progressive Web App (PWA) called <i>The&nbsp;Stacks</i> to fit her exact requirements. The app is designed to be lightweight and cozy, optimized for her to wander through her reading journey, not to track pages, chase goals, or bog her down in other unwanted features.
                         </p>
                     </div>
 
                     <!-- Storytelling Cards -->
                     <div class="grid sm:grid-cols-2 gap-6">
                         <div class="bg-[#f3f4f6] p-6 rounded-2xl border border-gray-100">
-                            <h4 class="font-bold text-lg text-[#1f2937] mb-2 uppercase tracking-wide text-xs text-[#be185d]">The Challenge</h4>
+                            <h4 class="font-bold text-lg text-[#1f2937] mb-2 uppercase tracking-wide text-xs text-[#be185d]">
+                                Requirements
+                            </h4>
                             <p class="text-sm text-gray-600 leading-relaxed">
-                                Standard training ecosystems are built for desktops. Frontline employees experience fatigue, leading to low completion rates and misalignment.
+                                A lightweight book-tracking app with cozy aesthetics and streamlined featureset. No social features, goals, or fine-grained tracking. Must include a dynamic library, scan-to-search functionality, and tracking by month, year, and all time.
                             </p>
                         </div>
                         <div class="bg-[#f3f4f6] p-6 rounded-2xl border border-gray-100">
                             <h4 class="font-bold text-lg text-[#1f2937] mb-2 uppercase tracking-wide text-xs text-[#be185d]">The Solution</h4>
                             <p class="text-sm text-gray-600 leading-relaxed">
-                                A mobile-first micro-enablement application that serves snackable learning prompts, gamified verification, and real-time news alerts.
+                                A mobile-first PWA that can be installed on any device for a native app experience without the overhead of a traditional mobile app. The first version fits my wife's needs perfectly, including a few delightful moments, such as the opening animation and Focus view.
                             </p>
                         </div>
                     </div>
