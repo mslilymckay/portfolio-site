@@ -30,78 +30,7 @@
     <body>
 
     <!-- Static Header -->
-        <header class="fixed top-0 left-0 w-full z-[60] bg-white shadow-sm m-0 p-0">
-        <div class="trans-motif w-full m-0 p-0"></div>
-        <nav class="grid grid-cols-2 items-center w-full px-6 md:px-12 py-3 relative">
-            <div class="flex items-center font-extrabold text-xl tracking-tighter text-[#be185d] h-full">
-            <a href="index.html" class="text-[#be185d] hover:text-pink-400" style="text-decoration: none;">LILY MCKAY</a>
-            </div>
-            <div class="flex justify-end items-center h-full w-full">
-            <div class="hidden md:flex gap-8 items-center font-bold text-[13px] tracking-widest text-[#1f2937]">
-                <a href="index.html" class="text-pink-400 transition uppercase" style="text-decoration: none;">Home</a>
-                
-                <!-- Overview Dropdown -->
-                <div class="relative group py-2">
-                    <button class="flex items-center gap-1.5 text-[#be185d] hover:text-pink-400 transition uppercase font-bold text-[13px] tracking-widest" style="background: none; border: none; padding: 0;">
-                        Overview <i class="fas fa-chevron-down text-[9px] transition-transform duration-300 group-hover:rotate-180"></i>
-                    </button>
-                    <div class="absolute top-full left-0 hidden group-hover:block pt-2 z-50">
-                        <div class="w-48 bg-white border border-gray-100 rounded-xl shadow-xl py-2">
-                            <a href="#identity" class="block px-4 py-2 text-[11px] text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d] transition font-bold uppercase tracking-wider" style="text-decoration: none;">Identity</a>
-                            <a href="#enablement" class="block px-4 py-2 text-[11px] text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d] transition font-bold uppercase tracking-wider" style="text-decoration: none;">Framework</a>
-                            <a href="#experience" class="block px-4 py-2 text-[11px] text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d] transition font-bold uppercase tracking-wider" style="text-decoration: none;">Experience</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Portfolio Dropdown -->
-                <div class="relative group py-2">
-                    <button class="flex items-center gap-1.5 text-[#be185d] hover:text-pink-400 transition uppercase font-bold text-[13px] tracking-widest" style="background: none; border: none; padding: 0;">
-                        Portfolio <i class="fas fa-chevron-down text-[9px] transition-transform duration-300 group-hover:rotate-180"></i>
-                    </button>
-                    <div class="absolute top-full left-0 hidden group-hover:block pt-2 z-50">
-                        <div class="w-64 bg-white border border-gray-100 rounded-xl shadow-xl py-2">
-                            <a href="the-stacks-demo.html" class="block px-4 py-2 text-[11px] text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d] transition font-bold uppercase tracking-wider" style="text-decoration: none;">Book-Tracking PWA</a>
-                            <a href="micro-simulation-demo.html" class="block px-4 py-2 text-[11px] text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d] transition font-bold uppercase tracking-wider" style="text-decoration: none;">Micro-Learning Simulation</a>
-                            <a href="news-case-study.html" class="block px-4 py-2 text-[11px] text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d] transition font-bold uppercase tracking-wider" style="text-decoration: none;">AI Workflow Automation</a>
-                        </div>
-                    </div>
-                </div>
-
-                <a href="#contact" class="bg-[#be185d] text-white px-6 py-2 rounded-lg hover:brightness-110 transition uppercase" style="text-decoration: none;">Contact</a>
-            </div>
-            <button onclick="toggleMenu()" class="md:hidden flex items-center justify-center text-[#be185d] focus:outline-none">
-                <i id="menu-icon" class="fas fa-bars text-2xl leading-none m-0 p-0"></i>
-            </button>
-            </div>
-            <!-- Hamburger Menu -->
-            <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 flex-col items-start px-6 py-8 space-y-6 md:hidden z-[70]">
-                <a href="index.html" onclick="toggleMenu()" class="block w-full text-pink-400 font-bold text-lg tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">Home</a>
-                
-                <!-- Overview Section on Mobile -->
-                <div class="w-full space-y-2">
-                    <span class="block w-full text-[#1f2937] font-bold text-xs uppercase tracking-wider opacity-60">Overview</span>
-                    <div class="pl-4 space-y-2 border-l-2 border-pink-100">
-                        <a href="#identity" onclick="toggleMenu()" class="block w-full text-[#be185d] font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">Identity</a>
-                        <a href="#enablement" onclick="toggleMenu()" class="block w-full text-[#be185d] font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">Framework</a>
-                        <a href="#experience" onclick="toggleMenu()" class="block w-full text-[#be185d] font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">Experience</a>
-                    </div>
-                </div>
-
-                <!-- Portfolio Section on Mobile -->
-                <div class="w-full space-y-2">
-                    <span class="block w-full text-[#1f2937] font-bold text-xs uppercase tracking-wider opacity-60">Portfolio</span>
-                    <div class="pl-4 space-y-2 border-l-2 border-pink-100">
-                        <a href="the-stacks-demo.html" onclick="toggleMenu()" class="block w-full text-[#be185d] font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">Book-Tracking PWA</a>
-                        <a href="micro-simulation-demo.html" onclick="toggleMenu()" class="block w-full text-[#be185d] font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">Micro-Learning Simulation</a>
-                        <a href="news-case-study.html" onclick="toggleMenu()" class="block w-full text-[#be185d] font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">AI Workflow Automation</a>
-                    </div>
-                </div>
-
-                <a href="#contact" onclick="toggleMenu()" class="inline-block bg-[#be185d] text-white px-8 py-3 rounded-lg font-bold text-lg tracking-widest uppercase hover:brightness-110 mt-2" style="text-decoration: none;">Contact</a>
-            </div>
-        </nav>
-        </header>
+    <header id="global-header"></header>
     <!-- Hero Section -->
         <section id="hero" class="hero-gradient min-h-screen flex items-center justify-center text-white pt-20 px-6 relative">
             <div class="max-w-4xl text-center">
@@ -367,37 +296,10 @@
         </section>
 
     <!-- Contact Section -->
-        <section id="contact" class="bg-[#fdf2f8] py-32 px-6">
-            <div class="max-w-4xl mx-auto text-center reveal">
-                <h2 class="text-5xl font-black mb-8 text-[#1f2937]">Let's connect.</h2>
-                <p class="text-xl text-gray-600 mb-14 max-w-2xl mx-auto leading-relaxed">Ready for the Agentic Era? I'm architecting the future of employee engagement. Let's discuss your transformation strategy!</p>
-                <div class="flex flex-wrap justify-center gap-12">
-                    <a href="mailto:lily.morin423@gmail.com" target="_blank" class="flex items-center text-[#be185d] font-black text-xl hover:opacity-80 transition">
-                        <i class="fas fa-envelope mr-4"></i> lily.morin423@gmail.com
-                    </a>
-                    <a href="https://linkedin.com/in/lilymorin" target="_blank" class="flex items-center text-[#be185d] font-black text-xl hover:opacity-80 transition">
-                        <i class="fab fa-linkedin mr-4"></i> /in/lilymorin
-                    </a>
-                </div>
-            </div>
-        </section>
-        <div class="trans-motif"></div>
-
-        <!-- Back to Top Button -->
-        <button id="backToTop" onclick="scrollToTop()" class="fixed bottom-8 right-8 bg-[#be185d] text-white p-4 rounded-full shadow-2xl hover:brightness-110 transition-all duration-300 z-50 flex items-center justify-center w-12 h-12">
-            <i class="fas fa-chevron-up text-lg"></i>
-        </button>
-    
-    </body>
+    <div id="global-contact"></div>
 
     <!-- Footer -->
-        <footer class="bg-white py-12 px-6">
-            <div class="text-center text-gray-400 text-xs font-bold uppercase tracking-[0.2em] flex flex-col sm:flex-row items-center justify-center gap-3 leading-relaxed">
-                <span class="flex items-center gap-2"><i class="fas fa-copyright text-pink-300"></i> 2026 Lily McKay.</span>
-                <span class="hidden sm:inline text-pink-300">•</span>
-                <span class="flex items-center gap-2">Built with Gemini. <i class="fas fa-wand-magic-sparkles text-pink-300"></i></span>
-            </div>
-        </footer>
+    <footer id="global-footer"></footer>
     <!-- Script -->
         <script src="script.js"></script>
 </html>
