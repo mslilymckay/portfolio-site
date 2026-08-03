@@ -214,33 +214,47 @@
                 overflow: hidden;
             }
             .zoomable-container::after {
-                content: '\f00e   Click to expand';
+                content: '\f00e';
                 font-family: 'Font Awesome 6 Free', sans-serif;
                 font-weight: 900;
                 position: absolute;
-                inset: 0;
-                background: rgba(190, 24, 93, 0.4); /* subtle pink overlay */
-                color: white;
+                bottom: 1rem;
+                left: 1rem;
+                background: rgba(31, 41, 55, 0.75); /* Dark semi-transparent circle */
+                color: #ffffff;
+                width: 2.5rem;
+                height: 2.5rem;
+                border-radius: 50%;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                opacity: 0;
-                transition: opacity 0.3s ease;
-                font-size: 0.875rem;
-                font-weight: bold;
-                text-transform: uppercase;
-                letter-spacing: 0.1em;
+                transition: background-color 0.3s, transform 0.3s;
+                font-size: 1rem;
                 z-index: 10;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
             }
             .zoomable-container:hover::after {
-                opacity: 1;
+                background-color: var(--rose);
+                transform: scale(1.1);
             }
             .zoomable-container img {
                 transition: transform 0.5s ease;
             }
             .zoomable-container:hover img {
-                transform: scale(1.03);
+                transform: scale(1.02);
             }
+        }
+
+        /* Premium Soft Border & Refined Shadow for Case Study Mockups */
+        .premium-image-border {
+            border: 1px solid rgba(190, 24, 93, 0.12) !important; /* Soft rose tint */
+            box-shadow: 0 12px 30px -10px rgba(190, 24, 93, 0.06), 0 2px 8px rgba(0, 0, 0, 0.02) !important;
+            border-radius: 0.75rem !important; /* xl rounded corner */
+            overflow: hidden;
+            transition: box-shadow 0.3s ease;
+        }
+        .premium-image-border:hover {
+            box-shadow: 0 16px 36px -12px rgba(190, 24, 93, 0.1), 0 4px 12px rgba(0, 0, 0, 0.03) !important;
         }
 
         /* Zoom Overlay Modal */
