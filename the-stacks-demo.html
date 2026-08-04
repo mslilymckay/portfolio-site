@@ -52,8 +52,31 @@
                         <div class="absolute top-0 left-1/2 transform -translate-x-1/2 h-5 w-32 bg-gray-800 rounded-b-xl z-20 flex justify-center items-center">
                             <div class="w-12 h-1 bg-gray-700 rounded-full mb-1"></div>
                         </div>
-                        <div class="w-full h-full bg-white rounded-[1.8rem] overflow-hidden relative">
-                            <iframe src="https://mslilymckay.github.io/the-stacks-demo/" class="w-full h-full border-none z-10 relative"></iframe>
+                        <div class="w-full h-full bg-white rounded-[1.8rem] overflow-hidden relative flex flex-col items-center justify-center">
+                            <!-- View Demo Overlay -->
+                            <div id="demo-overlay" class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-gradient-to-b from-[#fdf2f8] to-white px-6 text-center transition-all duration-500 ease-in-out">
+                                <!-- Decorative Soft Glow Blobs -->
+                                <div class="absolute top-10 left-10 w-24 h-24 bg-pink-200/30 rounded-full blur-xl pointer-events-none"></div>
+                                <div class="absolute bottom-10 right-10 w-24 h-24 bg-pink-300/20 rounded-full blur-xl pointer-events-none"></div>
+                                
+                                <div class="w-16 h-16 rounded-2xl bg-[#be185d]/10 flex items-center justify-center mb-4 border border-[#be185d]/20 shadow-sm relative z-10">
+                                    <i class="fas fa-book-open text-2xl text-[#be185d]"></i>
+                                </div>
+                                
+                                <h3 class="text-xl font-bold text-[#1f2937] mb-2 uppercase tracking-wide relative z-10" style="font-family: 'Tenor Sans', sans-serif;">
+                                    The Stacks
+                                </h3>
+                                <p class="text-xs text-gray-500 mb-6 max-w-[200px] leading-relaxed relative z-10">
+                                    Lightweight book-tracking PWA optimized for cozy mobile reading journals.
+                                </p>
+                                
+                                <button id="start-demo-btn" class="relative z-10 bg-[#be185d] text-white font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-xl hover:brightness-110 active:scale-95 transition-all shadow-md flex items-center gap-2 cursor-pointer">
+                                    <i class="fas fa-play text-[10px]"></i> View Demo
+                                </button>
+                            </div>
+
+                            <!-- Iframe (src deferred to data-src to prevent load) -->
+                            <iframe id="demo-iframe" data-src="https://mslilymckay.github.io/the-stacks-demo/" class="w-full h-full border-none z-0 opacity-0 transition-opacity duration-500 ease-in-out"></iframe>
                         </div>
                     </div>
                 </div>
@@ -121,5 +144,30 @@
 
     <!-- Scripts -->
     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const startBtn = document.getElementById('start-demo-btn');
+            const overlay = document.getElementById('demo-overlay');
+            const iframe = document.getElementById('demo-iframe');
 
+            if (startBtn && overlay && iframe) {
+                startBtn.addEventListener('click', () => {
+                    // 1. Set src to start loading (triggers the app loading/MP4 immediately)
+                    iframe.src = iframe.getAttribute('data-src');
+
+                    // 2. Transition overlay and iframe opacity immediately
+                    overlay.classList.add('opacity-0');
+                    overlay.style.pointerEvents = 'none';
+                    iframe.classList.remove('opacity-0');
+                    iframe.classList.add('z-10');
+
+                    // 3. Remove overlay from DOM once fade transition is complete
+                    overlay.addEventListener('transitionend', () => {
+                        overlay.remove();
+                    });
+                });
+            }
+        });
+    </script>
+</body>
 </html>
