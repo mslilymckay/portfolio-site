@@ -26,6 +26,14 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideInTop { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes slideInBottom { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Mobile standalone safety offsets */
+        body.standalone-mobile {
+            height: 100dvh !important;
+        }
+        body.standalone-mobile > div {
+            padding-bottom: env(safe-area-inset-bottom, 24px);
+        }
     </style>
 </head>
 <body class="w-screen h-screen m-0 p-0 bg-[#0f0f11] font-sans selection:bg-blue-500/30 text-gray-100 overflow-hidden">
@@ -262,6 +270,12 @@
     </div>
 
     <script>
+        // Apply safe-area layout classes only when running as a standalone app on mobile,
+        // avoiding breaks when rendered inside the phone mockup iframe on desktop.
+        if (window.self === window.top && window.innerWidth <= 768) {
+            document.body.classList.add('standalone-mobile');
+        }
+
         // --- Data Configurations ---
         const wtSteps = [
             { id: 'intro', title: 'The Balancing Act', desc: 'Why not just use the smartest model for everything? Because efficiency matters. We balance Speed vs. Depth, and Chat vs. Workspace. Let\'s explore how.', target: 'next', position: 'bottom' },
