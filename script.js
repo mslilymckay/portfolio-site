@@ -27,7 +27,7 @@ function showStep(num) {
         const mDesc = document.getElementById('mobile-desc-' + i);
         if (i === num) {
             if (container) {
-                container.classList.add('border-[#be185d]', 'bg-white/10');
+                container.classList.add('border-pink-700', 'bg-white/10');
                 container.classList.remove('border-white/10', 'bg-white/5');
             }
             if (mDesc) {
@@ -36,7 +36,7 @@ function showStep(num) {
             }
         } else {
             if (container) {
-                container.classList.remove('border-[#be185d]', 'bg-white/10');
+                container.classList.remove('border-pink-700', 'bg-white/10');
                 container.classList.add('border-white/10', 'bg-white/5');
             }
             if (mDesc) {
@@ -48,7 +48,7 @@ function showStep(num) {
         content.style.opacity = '0';
         setTimeout(() => {
             content.innerHTML = `
-                <div class="bg-[#be185d] w-16 h-16 rounded-full flex items-center justify-center mb-8 shadow-2xl">
+                <div class="bg-pink-700 w-16 h-16 rounded-full flex items-center justify-center mb-8 shadow-2xl">
                     <i class="fas ${step.icon} text-2xl text-white"></i>
                 </div>
                 <h4 class="text-4xl font-black mb-6 uppercase tracking-tight">${step.title}</h4>
@@ -89,42 +89,42 @@ function initGlobalElements() {
         if (isHome) {
             headerEl.className = "fixed top-0 left-0 w-full z-[60] bg-white shadow-sm m-0 p-0";
         } else {
-            headerEl.className = "fixed top-0 left-0 w-full z-[60] bg-[#fdf2f8]/90 backdrop-blur-md shadow-sm m-0 p-0";
+            headerEl.className = "fixed top-0 left-0 w-full z-[60] bg-pink-50/90 backdrop-blur-md shadow-sm m-0 p-0";
         }
 
-        const homeClass = isHome ? "text-pink-400 font-bold" : "text-[#be185d] hover:text-pink-400 font-bold";
-        const portfolioClass = isHome ? "text-[#be185d] hover:text-pink-400 font-bold" : "text-pink-400 font-bold";
+        const homeClass = isHome ? "text-pink-400 font-bold" : "text-pink-700 hover:text-pink-400 font-bold";
+        const portfolioClass = isHome ? "text-pink-700 hover:text-pink-400 font-bold" : "text-pink-400 font-bold";
 
         const overviewPrefix = isHome ? "" : "./";
 
-        const dropdownStacksClass = page === "the-stacks-demo.html" ? "bg-[#fdf2f8] text-[#be185d] font-bold" : "text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d]";
-        const dropdownSimClass = page === "micro-simulation-demo.html" ? "bg-[#fdf2f8] text-[#be185d] font-bold" : "text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d]";
-        const dropdownNewsClass = page === "news-case-study.html" ? "bg-[#fdf2f8] text-[#be185d] font-bold" : "text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d]";
+        const dropdownStacksClass = page === "the-stacks-demo.html" ? "bg-pink-50 text-pink-700 font-bold" : "text-gray-700 hover:bg-pink-50 hover:text-pink-700";
+        const dropdownSimClass = page === "micro-simulation-demo.html" ? "bg-pink-50 text-pink-700 font-bold" : "text-gray-700 hover:bg-pink-50 hover:text-pink-700";
+        const dropdownNewsClass = page === "news-case-study.html" ? "bg-pink-50 text-pink-700 font-bold" : "text-gray-700 hover:bg-pink-50 hover:text-pink-700";
 
-        const mobileStacksClass = page === "the-stacks-demo.html" ? "text-pink-400 font-bold" : "text-[#be185d] hover:text-pink-400 font-bold";
-        const mobileSimClass = page === "micro-simulation-demo.html" ? "text-pink-400 font-bold" : "text-[#be185d] hover:text-pink-400 font-bold";
-        const mobileNewsClass = page === "news-case-study.html" ? "text-pink-400 font-bold" : "text-[#be185d] hover:text-pink-400 font-bold";
+        const mobileStacksClass = page === "the-stacks-demo.html" ? "text-pink-400 font-bold" : "text-pink-700 hover:text-pink-400 font-bold";
+        const mobileSimClass = page === "micro-simulation-demo.html" ? "text-pink-400 font-bold" : "text-pink-700 hover:text-pink-400 font-bold";
+        const mobileNewsClass = page === "news-case-study.html" ? "text-pink-400 font-bold" : "text-pink-700 hover:text-pink-400 font-bold";
 
         headerEl.innerHTML = `
         <div class="trans-motif w-full m-0 p-0"></div>
         <nav class="grid grid-cols-2 items-center w-full px-6 md:px-12 py-3 relative">
-            <div class="flex items-center font-extrabold text-xl tracking-tighter text-[#be185d] h-full">
-                <a href="./" class="text-[#be185d] hover:text-pink-400" style="text-decoration: none;">LILY MCKAY</a>
+            <div class="flex items-center font-extrabold text-xl tracking-tighter text-pink-700 h-full">
+                <a href="./" class="text-pink-700 hover:text-pink-400" style="text-decoration: none;">LILY MCKAY</a>
             </div>
             <div class="flex justify-end items-center h-full w-full">
-                <div class="hidden md:flex gap-8 items-center font-bold text-[13px] tracking-widest text-[#1f2937]">
+                <div class="hidden md:flex gap-8 items-center font-bold text-[13px] tracking-widest text-gray-800">
                     <a href="./" class="${homeClass} transition uppercase" style="text-decoration: none;">Home</a>
                     
                     <!-- Overview Dropdown -->
                     <div class="relative group py-2">
-                        <button class="flex items-center gap-1.5 text-[#be185d] hover:text-pink-400 transition uppercase font-bold text-[13px] tracking-widest" style="background: none; border: none; padding: 0;">
+                        <button class="flex items-center gap-1.5 text-pink-700 hover:text-pink-400 transition uppercase font-bold text-[13px] tracking-widest" style="background: none; border: none; padding: 0;">
                             About Me <i class="fas fa-chevron-down text-[9px] transition-transform duration-300 group-hover:rotate-180"></i>
                         </button>
                         <div class="absolute top-full left-0 hidden group-hover:block pt-2 z-50">
                             <div class="w-48 bg-white border border-gray-100 rounded-xl shadow-xl py-2">
-                                <a href="${overviewPrefix}#identity" class="block px-4 py-2 text-[11px] text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d] transition font-bold uppercase tracking-wider" style="text-decoration: none;">Core Pillars</a>
-                                <a href="${overviewPrefix}#enablement" class="block px-4 py-2 text-[11px] text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d] transition font-bold uppercase tracking-wider" style="text-decoration: none;">My Approach</a>
-                                <a href="${overviewPrefix}#experience" class="block px-4 py-2 text-[11px] text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d] transition font-bold uppercase tracking-wider" style="text-decoration: none;">My Journey</a>
+                                <a href="${overviewPrefix}#identity" class="block px-4 py-2 text-[11px] text-gray-700 hover:bg-pink-50 hover:text-pink-700 transition font-bold uppercase tracking-wider" style="text-decoration: none;">Core Pillars</a>
+                                <a href="${overviewPrefix}#enablement" class="block px-4 py-2 text-[11px] text-gray-700 hover:bg-pink-50 hover:text-pink-700 transition font-bold uppercase tracking-wider" style="text-decoration: none;">My Approach</a>
+                                <a href="${overviewPrefix}#experience" class="block px-4 py-2 text-[11px] text-gray-700 hover:bg-pink-50 hover:text-pink-700 transition font-bold uppercase tracking-wider" style="text-decoration: none;">My Journey</a>
                             </div>
                         </div>
                     </div>
@@ -143,30 +143,30 @@ function initGlobalElements() {
                         </div>
                     </div>
 
-                    <a href="#contact" class="bg-[#be185d] text-white px-6 py-2 rounded-lg border border-transparent hover:bg-[#fdf2f8] hover:text-[#be185d] hover:border-[#be185d] transition uppercase" style="text-decoration: none;">Contact</a>
+                    <a href="#contact" class="bg-pink-700 text-white px-6 py-2 rounded-lg border border-transparent hover:bg-pink-400 hover:text-gray-800 hover:border-pink-400 transition uppercase" style="text-decoration: none;">Contact</a>
                 </div>
-                <button onclick="toggleMenu()" class="md:hidden flex items-center justify-center text-[#be185d] focus:outline-none">
+                <button onclick="toggleMenu()" class="md:hidden flex items-center justify-center text-pink-700 focus:outline-none">
                     <i id="menu-icon" class="fas fa-bars text-2xl leading-none m-0 p-0"></i>
                 </button>
             </div>
             
             <!-- Hamburger Menu -->
             <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 flex-col items-start px-6 py-8 space-y-6 md:hidden z-[70]">
-                <a href="./" onclick="toggleMenu()" class="block w-full ${isHome ? 'text-pink-400 font-bold' : 'text-[#be185d] hover:text-pink-400 font-bold'} text-lg tracking-widest uppercase" style="text-decoration: none;">Home</a>
+                <a href="./" onclick="toggleMenu()" class="block w-full ${isHome ? 'text-pink-400 font-bold' : 'text-pink-700 hover:text-pink-400 font-bold'} text-lg tracking-widest uppercase" style="text-decoration: none;">Home</a>
                 
                 <!-- Overview Section on Mobile -->
                 <div class="w-full space-y-2">
-                    <span class="block w-full text-[#1f2937] font-bold text-xs uppercase tracking-wider opacity-60">About Me</span>
+                    <span class="block w-full text-gray-800 font-bold text-xs uppercase tracking-wider opacity-60">About Me</span>
                     <div class="pl-4 space-y-2 border-l-2 border-pink-100">
-                        <a href="${overviewPrefix}#identity" onclick="toggleMenu()" class="block w-full text-[#be185d] font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">Core Pillars</a>
-                        <a href="${overviewPrefix}#enablement" onclick="toggleMenu()" class="block w-full text-[#be185d] font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">My Approach</a>
-                        <a href="${overviewPrefix}#experience" onclick="toggleMenu()" class="block w-full text-[#be185d] font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">My Journey</a>
+                        <a href="${overviewPrefix}#identity" onclick="toggleMenu()" class="block w-full text-pink-700 font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">Core Pillars</a>
+                        <a href="${overviewPrefix}#enablement" onclick="toggleMenu()" class="block w-full text-pink-700 font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">My Approach</a>
+                        <a href="${overviewPrefix}#experience" onclick="toggleMenu()" class="block w-full text-pink-700 font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">My Journey</a>
                     </div>
                 </div>
 
                 <!-- Portfolio Section on Mobile -->
                 <div class="w-full space-y-2">
-                    <span class="block w-full ${isHome ? 'text-[#1f2937] opacity-60' : 'text-pink-400'} font-bold text-xs uppercase tracking-wider">Case Studies</span>
+                    <span class="block w-full ${isHome ? 'text-gray-800 opacity-60' : 'text-pink-400'} font-bold text-xs uppercase tracking-wider">Case Studies</span>
                     <div class="pl-4 space-y-2 border-l-2 ${isHome ? 'border-pink-100' : 'border-pink-300'}">
                         <a href="news-case-study.html" onclick="toggleMenu()" class="block w-full ${mobileNewsClass} text-base tracking-widest uppercase" style="text-decoration: none;">AI Workflow Automation</a>
                         <a href="micro-simulation-demo.html" onclick="toggleMenu()" class="block w-full ${mobileSimClass} text-base tracking-widest uppercase" style="text-decoration: none;">Micro-Learning Simulation</a>
@@ -174,7 +174,7 @@ function initGlobalElements() {
                     </div>
                 </div>
 
-                <a href="#contact" onclick="toggleMenu()" class="inline-block bg-[#be185d] text-white px-8 py-3 rounded-lg font-bold text-lg tracking-widest uppercase border border-transparent hover:bg-[#fdf2f8] hover:text-[#be185d] hover:border-[#be185d] transition mt-2" style="text-decoration: none;">Contact</a>
+                <a href="#contact" onclick="toggleMenu()" class="inline-block bg-pink-700 text-white px-8 py-3 rounded-lg font-bold text-lg tracking-widest uppercase border border-transparent hover:bg-pink-400 hover:text-gray-800 hover:border-pink-400 transition mt-2" style="text-decoration: none;">Contact</a>
             </div>
         </nav>
         `;
@@ -184,15 +184,15 @@ function initGlobalElements() {
     const contactEl = document.getElementById('global-contact');
     if (contactEl) {
         contactEl.innerHTML = `
-        <section id="contact" class="bg-[#fdf2f8] py-32 px-6">
+        <section id="contact" class="bg-pink-50 py-32 px-6">
             <div class="max-w-4xl mx-auto text-center reveal">
-                <h2 class="text-5xl font-black mb-8 text-[#1f2937]">Let's connect.</h2>
+                <h2 class="text-5xl font-black mb-8 text-gray-800">Let's connect.</h2>
                 <p class="text-xl text-gray-600 mb-14 max-w-2xl mx-auto leading-relaxed">Ready for the Agentic Era? I'm helping teams of all sizes transform the way employees work and engage with AI.<br><span class="block mt-4 font-bold">Let's build something together!</span></p>
                 <div class="flex flex-wrap justify-center gap-12">
-                    <a href="mailto:lily.morin423@gmail.com" target="_blank" class="flex items-center text-[#be185d] font-black text-xl hover:text-pink-400 transition">
+                    <a href="mailto:lily.morin423@gmail.com" target="_blank" class="flex items-center text-pink-700 font-black text-xl hover:text-pink-400 transition">
                         <i class="fas fa-envelope mr-4"></i> lily.morin423@gmail.com
                     </a>
-                    <a href="https://linkedin.com/in/lilymorin" target="_blank" class="flex items-center text-[#be185d] font-black text-xl hover:text-pink-400 transition">
+                    <a href="https://linkedin.com/in/lilymorin" target="_blank" class="flex items-center text-pink-700 font-black text-xl hover:text-pink-400 transition">
                         <i class="fab fa-linkedin mr-4"></i> /in/lilymorin
                     </a>
                 </div>
@@ -215,7 +215,7 @@ function initGlobalElements() {
             </div>
             
             <!-- Back to Top Button -->
-            <button id="backToTop" onclick="scrollToTop()" class="fixed bottom-8 right-8 bg-[#be185d] text-white p-4 rounded-full shadow-2xl border border-transparent hover:bg-[#fdf2f8] hover:text-[#be185d] hover:border-[#be185d] transition-all duration-300 z-50 flex items-center justify-center w-12 h-12">
+            <button id="backToTop" onclick="scrollToTop()" class="fixed bottom-8 right-8 bg-pink-700 text-white p-4 rounded-full shadow-2xl border border-transparent hover:bg-pink-400 hover:text-gray-800 hover:border-pink-400 transition-all duration-300 z-50 flex items-center justify-center w-12 h-12">
                 <i class="fas fa-chevron-up text-lg"></i>
             </button>
         `;
