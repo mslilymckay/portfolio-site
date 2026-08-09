@@ -215,7 +215,7 @@ function initGlobalElements() {
             </div>
             
             <!-- Back to Top Button -->
-            <button id="backToTop" onclick="scrollToTop()" class="fixed bottom-8 right-8 bg-pink-700 text-white p-4 rounded-full shadow-2xl border border-transparent hover:bg-pink-400 hover:text-transparent hover:border-pink-400 transition-all duration-300 z-50 flex items-center justify-center w-12 h-12">
+            <button id="backToTop" onclick="scrollToTop()" class="fixed bottom-8 right-8 bg-pink-700 text-white p-4 rounded-full shadow-2xl border border-transparent hover:bg-pink-400 hover:text-white hover:border-pink-400 transition-all duration-300 z-50 flex items-center justify-center w-12 h-12">
                 <i class="fas fa-chevron-up text-lg"></i>
             </button>
         `;
