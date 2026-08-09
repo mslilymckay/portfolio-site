@@ -143,7 +143,7 @@ function initGlobalElements() {
                         </div>
                     </div>
 
-                    <a href="#contact" class="bg-pink-700 text-white px-6 py-2 rounded-lg border border-transparent hover:bg-pink-400 hover:text-gray-800 hover:border-pink-400 transition uppercase" style="text-decoration: none;">Contact</a>
+                    <a href="#contact" class="bg-pink-700 text-white px-6 py-2 rounded-lg border border-transparent hover:bg-pink-400 hover:text-white hover:border-pink-400 transition uppercase" style="text-decoration: none;">Contact</a>
                 </div>
                 <button onclick="toggleMenu()" class="md:hidden flex items-center justify-center text-pink-700 focus:outline-none">
                     <i id="menu-icon" class="fas fa-bars text-2xl leading-none m-0 p-0"></i>
@@ -215,7 +215,7 @@ function initGlobalElements() {
             </div>
             
             <!-- Back to Top Button -->
-            <button id="backToTop" onclick="scrollToTop()" class="fixed bottom-8 right-8 bg-pink-700 text-white p-4 rounded-full shadow-2xl border border-transparent hover:bg-pink-400 hover:text-gray-800 hover:border-pink-400 transition-all duration-300 z-50 flex items-center justify-center w-12 h-12">
+            <button id="backToTop" onclick="scrollToTop()" class="fixed bottom-8 right-8 bg-pink-700 text-white p-4 rounded-full shadow-2xl border border-transparent hover:bg-pink-400 hover:text-transparent hover:border-pink-400 transition-all duration-300 z-50 flex items-center justify-center w-12 h-12">
                 <i class="fas fa-chevron-up text-lg"></i>
             </button>
         `;
