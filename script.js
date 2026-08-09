@@ -7,7 +7,7 @@ const steps = {
     },
     2: {
         title: "AI Augmented Enablement",
-        icon: "fa-robot",
+        icon: "fa-wand-magic-sparkles",
         quote: "Prioritizing relevant, hands-on practice for adult learners.",
         bullets: ["AI-Augmented Speed and Scale", "Performance Gap Analysis", "Function-Specific Workshop Design"]
     },
@@ -118,13 +118,13 @@ function initGlobalElements() {
                     <!-- Overview Dropdown -->
                     <div class="relative group py-2">
                         <button class="flex items-center gap-1.5 text-[#be185d] hover:text-pink-400 transition uppercase font-bold text-[13px] tracking-widest" style="background: none; border: none; padding: 0;">
-                            Overview <i class="fas fa-chevron-down text-[9px] transition-transform duration-300 group-hover:rotate-180"></i>
+                            About Me <i class="fas fa-chevron-down text-[9px] transition-transform duration-300 group-hover:rotate-180"></i>
                         </button>
                         <div class="absolute top-full left-0 hidden group-hover:block pt-2 z-50">
                             <div class="w-48 bg-white border border-gray-100 rounded-xl shadow-xl py-2">
-                                <a href="${overviewPrefix}#identity" class="block px-4 py-2 text-[11px] text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d] transition font-bold uppercase tracking-wider" style="text-decoration: none;">Identity</a>
-                                <a href="${overviewPrefix}#enablement" class="block px-4 py-2 text-[11px] text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d] transition font-bold uppercase tracking-wider" style="text-decoration: none;">Framework</a>
-                                <a href="${overviewPrefix}#experience" class="block px-4 py-2 text-[11px] text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d] transition font-bold uppercase tracking-wider" style="text-decoration: none;">Experience</a>
+                                <a href="${overviewPrefix}#identity" class="block px-4 py-2 text-[11px] text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d] transition font-bold uppercase tracking-wider" style="text-decoration: none;">Core Pillars</a>
+                                <a href="${overviewPrefix}#enablement" class="block px-4 py-2 text-[11px] text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d] transition font-bold uppercase tracking-wider" style="text-decoration: none;">My Approach</a>
+                                <a href="${overviewPrefix}#experience" class="block px-4 py-2 text-[11px] text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d] transition font-bold uppercase tracking-wider" style="text-decoration: none;">My Journey</a>
                             </div>
                         </div>
                     </div>
@@ -132,13 +132,13 @@ function initGlobalElements() {
                     <!-- Portfolio Dropdown -->
                     <div class="relative group py-2">
                         <button class="flex items-center gap-1.5 ${portfolioClass} transition uppercase font-bold text-[13px] tracking-widest" style="background: none; border: none; padding: 0;">
-                            Portfolio <i class="fas fa-chevron-down text-[9px] transition-transform duration-300 group-hover:rotate-180"></i>
+                            Case Studies <i class="fas fa-chevron-down text-[9px] transition-transform duration-300 group-hover:rotate-180"></i>
                         </button>
                         <div class="absolute top-full left-0 hidden group-hover:block pt-2 z-50">
                             <div class="w-64 bg-white border border-gray-100 rounded-xl shadow-xl py-2">
                                 <a href="news-case-study.html" class="block px-4 py-2 text-[11px] ${dropdownNewsClass} transition uppercase tracking-wider" style="text-decoration: none;">AI Workflow Automation</a>
                                 <a href="micro-simulation-demo.html" class="block px-4 py-2 text-[11px] ${dropdownSimClass} transition uppercase tracking-wider" style="text-decoration: none;">Micro-Learning Simulation</a>
-                                <a href="the-stacks-demo.html" class="block px-4 py-2 text-[11px] ${dropdownStacksClass} transition uppercase tracking-wider" style="text-decoration: none;">Book-Tracking PWA</a>
+                                <a href="the-stacks-demo.html" class="block px-4 py-2 text-[11px] ${dropdownStacksClass} transition uppercase tracking-wider" style="text-decoration: none;">Book-Tracking App</a>
                             </div>
                         </div>
                     </div>
@@ -156,21 +156,21 @@ function initGlobalElements() {
                 
                 <!-- Overview Section on Mobile -->
                 <div class="w-full space-y-2">
-                    <span class="block w-full text-[#1f2937] font-bold text-xs uppercase tracking-wider opacity-60">Overview</span>
+                    <span class="block w-full text-[#1f2937] font-bold text-xs uppercase tracking-wider opacity-60">About Me</span>
                     <div class="pl-4 space-y-2 border-l-2 border-pink-100">
-                        <a href="${overviewPrefix}#identity" onclick="toggleMenu()" class="block w-full text-[#be185d] font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">Identity</a>
-                        <a href="${overviewPrefix}#enablement" onclick="toggleMenu()" class="block w-full text-[#be185d] font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">Framework</a>
-                        <a href="${overviewPrefix}#experience" onclick="toggleMenu()" class="block w-full text-[#be185d] font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">Experience</a>
+                        <a href="${overviewPrefix}#identity" onclick="toggleMenu()" class="block w-full text-[#be185d] font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">Core Pillars</a>
+                        <a href="${overviewPrefix}#enablement" onclick="toggleMenu()" class="block w-full text-[#be185d] font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">My Approach</a>
+                        <a href="${overviewPrefix}#experience" onclick="toggleMenu()" class="block w-full text-[#be185d] font-bold text-base tracking-widest uppercase hover:text-pink-400" style="text-decoration: none;">My Journey</a>
                     </div>
                 </div>
 
                 <!-- Portfolio Section on Mobile -->
                 <div class="w-full space-y-2">
-                    <span class="block w-full ${isHome ? 'text-[#1f2937] opacity-60' : 'text-pink-400'} font-bold text-xs uppercase tracking-wider">Portfolio</span>
+                    <span class="block w-full ${isHome ? 'text-[#1f2937] opacity-60' : 'text-pink-400'} font-bold text-xs uppercase tracking-wider">Case Studies</span>
                     <div class="pl-4 space-y-2 border-l-2 ${isHome ? 'border-pink-100' : 'border-pink-300'}">
                         <a href="news-case-study.html" onclick="toggleMenu()" class="block w-full ${mobileNewsClass} text-base tracking-widest uppercase" style="text-decoration: none;">AI Workflow Automation</a>
                         <a href="micro-simulation-demo.html" onclick="toggleMenu()" class="block w-full ${mobileSimClass} text-base tracking-widest uppercase" style="text-decoration: none;">Micro-Learning Simulation</a>
-                        <a href="the-stacks-demo.html" onclick="toggleMenu()" class="block w-full ${mobileStacksClass} text-base tracking-widest uppercase" style="text-decoration: none;">Book-Tracking PWA</a>
+                        <a href="the-stacks-demo.html" onclick="toggleMenu()" class="block w-full ${mobileStacksClass} text-base tracking-widest uppercase" style="text-decoration: none;">Book-Tracking App</a>
                     </div>
                 </div>
 
@@ -187,7 +187,7 @@ function initGlobalElements() {
         <section id="contact" class="bg-[#fdf2f8] py-32 px-6">
             <div class="max-w-4xl mx-auto text-center reveal">
                 <h2 class="text-5xl font-black mb-8 text-[#1f2937]">Let's connect.</h2>
-                <p class="text-xl text-gray-600 mb-14 max-w-2xl mx-auto leading-relaxed">Ready for the Agentic Era? I'm architecting the future of employee engagement. Let's discuss your transformation strategy!</p>
+                <p class="text-xl text-gray-600 mb-14 max-w-2xl mx-auto leading-relaxed">Ready for the Agentic Era? I'm helping teams of all sizes transform the way employees work and engage with AI.<br><span class="block mt-4 font-bold">Let's build something together!</span></p>
                 <div class="flex flex-wrap justify-center gap-12">
                     <a href="mailto:lily.morin423@gmail.com" target="_blank" class="flex items-center text-[#be185d] font-black text-xl hover:opacity-80 transition">
                         <i class="fas fa-envelope mr-4"></i> lily.morin423@gmail.com
