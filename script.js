@@ -95,7 +95,7 @@ function initGlobalElements() {
         const homeClass = isHome ? "text-pink-400 font-bold" : "text-[#be185d] hover:text-pink-400 font-bold";
         const portfolioClass = isHome ? "text-[#be185d] hover:text-pink-400 font-bold" : "text-pink-400 font-bold";
 
-        const overviewPrefix = isHome ? "" : "index.html";
+        const overviewPrefix = isHome ? "" : "./";
 
         const dropdownStacksClass = page === "the-stacks-demo.html" ? "bg-[#fdf2f8] text-[#be185d] font-bold" : "text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d]";
         const dropdownSimClass = page === "micro-simulation-demo.html" ? "bg-[#fdf2f8] text-[#be185d] font-bold" : "text-gray-700 hover:bg-[#fdf2f8] hover:text-[#be185d]";
@@ -109,11 +109,11 @@ function initGlobalElements() {
         <div class="trans-motif w-full m-0 p-0"></div>
         <nav class="grid grid-cols-2 items-center w-full px-6 md:px-12 py-3 relative">
             <div class="flex items-center font-extrabold text-xl tracking-tighter text-[#be185d] h-full">
-                <a href="index.html" class="text-[#be185d] hover:text-pink-400" style="text-decoration: none;">LILY MCKAY</a>
+                <a href="./" class="text-[#be185d] hover:text-pink-400" style="text-decoration: none;">LILY MCKAY</a>
             </div>
             <div class="flex justify-end items-center h-full w-full">
                 <div class="hidden md:flex gap-8 items-center font-bold text-[13px] tracking-widest text-[#1f2937]">
-                    <a href="index.html" class="${homeClass} transition uppercase" style="text-decoration: none;">Home</a>
+                    <a href="./" class="${homeClass} transition uppercase" style="text-decoration: none;">Home</a>
                     
                     <!-- Overview Dropdown -->
                     <div class="relative group py-2">
@@ -143,7 +143,7 @@ function initGlobalElements() {
                         </div>
                     </div>
 
-                    <a href="#contact" class="bg-[#be185d] text-white px-6 py-2 rounded-lg hover:brightness-110 transition uppercase" style="text-decoration: none;">Contact</a>
+                    <a href="#contact" class="bg-[#be185d] text-white px-6 py-2 rounded-lg border border-transparent hover:bg-[#fdf2f8] hover:text-[#be185d] hover:border-[#be185d] transition uppercase" style="text-decoration: none;">Contact</a>
                 </div>
                 <button onclick="toggleMenu()" class="md:hidden flex items-center justify-center text-[#be185d] focus:outline-none">
                     <i id="menu-icon" class="fas fa-bars text-2xl leading-none m-0 p-0"></i>
@@ -152,7 +152,7 @@ function initGlobalElements() {
             
             <!-- Hamburger Menu -->
             <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 flex-col items-start px-6 py-8 space-y-6 md:hidden z-[70]">
-                <a href="index.html" onclick="toggleMenu()" class="block w-full ${isHome ? 'text-pink-400 font-bold' : 'text-[#be185d] hover:text-pink-400 font-bold'} text-lg tracking-widest uppercase" style="text-decoration: none;">Home</a>
+                <a href="./" onclick="toggleMenu()" class="block w-full ${isHome ? 'text-pink-400 font-bold' : 'text-[#be185d] hover:text-pink-400 font-bold'} text-lg tracking-widest uppercase" style="text-decoration: none;">Home</a>
                 
                 <!-- Overview Section on Mobile -->
                 <div class="w-full space-y-2">
@@ -174,7 +174,7 @@ function initGlobalElements() {
                     </div>
                 </div>
 
-                <a href="#contact" onclick="toggleMenu()" class="inline-block bg-[#be185d] text-white px-8 py-3 rounded-lg font-bold text-lg tracking-widest uppercase hover:brightness-110 mt-2" style="text-decoration: none;">Contact</a>
+                <a href="#contact" onclick="toggleMenu()" class="inline-block bg-[#be185d] text-white px-8 py-3 rounded-lg font-bold text-lg tracking-widest uppercase border border-transparent hover:bg-[#fdf2f8] hover:text-[#be185d] hover:border-[#be185d] transition mt-2" style="text-decoration: none;">Contact</a>
             </div>
         </nav>
         `;
@@ -189,10 +189,10 @@ function initGlobalElements() {
                 <h2 class="text-5xl font-black mb-8 text-[#1f2937]">Let's connect.</h2>
                 <p class="text-xl text-gray-600 mb-14 max-w-2xl mx-auto leading-relaxed">Ready for the Agentic Era? I'm helping teams of all sizes transform the way employees work and engage with AI.<br><span class="block mt-4 font-bold">Let's build something together!</span></p>
                 <div class="flex flex-wrap justify-center gap-12">
-                    <a href="mailto:lily.morin423@gmail.com" target="_blank" class="flex items-center text-[#be185d] font-black text-xl hover:opacity-80 transition">
+                    <a href="mailto:lily.morin423@gmail.com" target="_blank" class="flex items-center text-[#be185d] font-black text-xl hover:text-pink-400 transition">
                         <i class="fas fa-envelope mr-4"></i> lily.morin423@gmail.com
                     </a>
-                    <a href="https://linkedin.com/in/lilymorin" target="_blank" class="flex items-center text-[#be185d] font-black text-xl hover:opacity-80 transition">
+                    <a href="https://linkedin.com/in/lilymorin" target="_blank" class="flex items-center text-[#be185d] font-black text-xl hover:text-pink-400 transition">
                         <i class="fab fa-linkedin mr-4"></i> /in/lilymorin
                     </a>
                 </div>
@@ -215,7 +215,7 @@ function initGlobalElements() {
             </div>
             
             <!-- Back to Top Button -->
-            <button id="backToTop" onclick="scrollToTop()" class="fixed bottom-8 right-8 bg-[#be185d] text-white p-4 rounded-full shadow-2xl hover:brightness-110 transition-all duration-300 z-50 flex items-center justify-center w-12 h-12">
+            <button id="backToTop" onclick="scrollToTop()" class="fixed bottom-8 right-8 bg-[#be185d] text-white p-4 rounded-full shadow-2xl border border-transparent hover:bg-[#fdf2f8] hover:text-[#be185d] hover:border-[#be185d] transition-all duration-300 z-50 flex items-center justify-center w-12 h-12">
                 <i class="fas fa-chevron-up text-lg"></i>
             </button>
         `;
