@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            Emotion Wheel Demo | Lily McKay
+        </title>
+        <meta name="description" content="Mobile Enablement Platform Case Study & App Demo by Lily McKay, Transformation Architect." />
+        <link rel="icon" type="image/png" href="icon.png" />
+        
+        <!-- CDNs -->
+        <script>
+            const originalWarn = console.warn;
+            console.warn = function(...args) {
+                if (args[0] && typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com')) return;
+                originalWarn.apply(console, args);
+            };
+        </script>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+        
+        <!-- Style -->
+        <link rel="stylesheet" href="style.css" />
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Emotion Wheel Demo | Lily McKay" />
+        <meta property="og:description" content="Emotion Wheel-Based Journaling App Demo by Lily McKay, Transformation Architect." />
+        <meta property="og:image" content="icon.png" />
+    </head>
+    
+    <body>
+
+    <!-- Static Header -->
+    <header id="global-header"></header>
+
+    <!-- Lighter Hero Section -->
+        <section class="bg-pink-50 pt-36 pb-16 px-6 border-b border-pink-100/50">
+            <div class="max-w-4xl mx-auto text-center">
+                <span class="text-pink-700 font-bold tracking-[0.2em] text-xs uppercase opacity-70">
+                    Web App Case Study & Demo
+                </span>
+                <h1 class="text-4xl md:text-6xl font-black mt-4 mb-6 text-gray-800">Emotion Wheel-Based Journaling App</h1>
+                <p class="text-lg md:text-xl text-gray-600 font-light max-w-2xl mx-auto leading-relaxed">
+                    Here’s how I vibe coded a lightweight Progressive Web App (PWA) designed to help users explore their emotions, track mood patterns, and engage in reflective journaling. This demo showcases a bespoke mobile-first user experience designed for coziness and data storytelling. Check it out!
+                </p>
+            </div>
+        </section>
+
+    <!-- Case Study & Live App Section -->
+        <section class="py-20 px-6 bg-white" id="stacks-case-study">
+            <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Phone Mockup Container (5 cols on desktop) -->
+                <div class="lg:col-span-5 lg:sticky lg:top-24 flex justify-center lg:justify-start reveal">
+                    <div class="relative border-gray-800 bg-gray-800 border-[12px] rounded-[2.5rem] w-[340px] h-[690px] lg:h-[85vh] lg:max-h-[900px] lg:min-h-[560px] lg:aspect-[375/680] lg:w-auto shadow-2xl overflow-hidden flex-shrink-0">
+                        <!-- Speaker / Camera notch notch -->
+                        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 h-5 w-32 bg-gray-800 rounded-b-xl z-20 flex justify-center items-center">
+                            <div class="w-12 h-1 bg-gray-700 rounded-full mb-1"></div>
+                        </div>
+                        <div class="w-full h-full bg-white rounded-[1.8rem] overflow-hidden relative flex flex-col items-center justify-center">
+                            <!-- View Demo Overlay -->
+                            <div id="demo-overlay" class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-gradient-to-b from-pink-50 to-white px-6 text-center transition-all duration-500 ease-in-out">
+                                <!-- Decorative Soft Glow Blobs -->
+                                <div class="absolute top-10 left-10 w-24 h-24 bg-pink-200/30 rounded-full blur-xl pointer-events-none"></div>
+                                <div class="absolute bottom-10 right-10 w-24 h-24 bg-pink-300/20 rounded-full blur-xl pointer-events-none"></div>
+                                
+                                <div class="w-16 h-16 rounded-2xl bg-pink-700/10 flex items-center justify-center mb-4 border border-pink-700/20 shadow-sm relative z-10">
+                                    <i class="fas fa-book-open text-2xl text-pink-700"></i>
+                                </div>
+                                
+                                <h3 class="text-xl font-bold text-gray-800 mb-2 uppercase tracking-wide relative z-10" style="font-family: 'Tenor Sans', sans-serif;">
+                                    Emotion Wheel
+                                </h3>
+                                <p class="text-xs text-gray-500 mb-6 max-w-[200px] leading-relaxed relative z-10">
+                                    Lightweight journaling PWA based on the Emotion Wheel.
+                                </p>
+                                
+                                <button id="start-demo-btn" class="relative z-10 bg-pink-700 text-white font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-xl border border-transparent hover:bg-pink-400 hover:text-gray-800 hover:border-pink-400 active:scale-95 transition-all shadow-md flex items-center gap-2 cursor-pointer">
+                                    <i class="fas fa-play text-[10px]"></i> Start Demo
+                                </button>
+                            </div>
+
+                            <!-- Iframe (src deferred to data-src to prevent load) -->
+                            <iframe id="demo-iframe" data-src="https://mslilymckay.github.io/emotion-wheel/" class="w-full h-full border-none z-0 opacity-0 transition-opacity duration-500 ease-in-out"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study Details (7 cols on desktop) -->
+                <div class="lg:col-span-7 space-y-10 reveal">
+                    <div>
+                        <h2 class="text-3xl font-black text-gray-800 mb-4">
+                            About this Project
+                        </h2>
+                        <div class="w-20 h-1 bg-pink-700 mb-6"></div>
+                        <p class="text-gray-600 leading-relaxed text-lg mb-4">
+                            My wife needed to replace her ancient book-tracking app, but nothing she could find met her needs. So I built a Progressive Web App (PWA) called <i>The&nbsp;Stacks</i> to fit her exact requirements.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed text-lg mb-4">
+                            The app is designed to be lightweight and cozy, optimized for her to wander through her reading journey, not to track pages, chase goals, or bog her down in other unwanted features.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed text-lg mb-4">
+                            Through this process I experimented with vibe coding using Google Gemini chat as a planning and troubleshooting coach, Cursor to recommend new features and UI improvements, and Antigravity to automate local SDLC workflows to audit code, implement complex features, and deploy to production.
+                        </p>
+                    </div>
+
+                    <!-- Storytelling Cards -->
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="bg-[#f3f4f6] p-6 rounded-2xl border border-gray-100">
+                            <h4 class="font-bold text-lg text-gray-800 mb-2 uppercase tracking-wide text-xs text-pink-700">
+                                Requirements
+                            </h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                A lightweight book-tracking app with cozy aesthetics and streamlined featureset. No social features, goals, or fine-grained tracking. Must include a dynamic library, scan-to-search functionality, and tracking by month, year, and all time.
+                            </p>
+                        </div>
+                        <div class="bg-[#f3f4f6] p-6 rounded-2xl border border-gray-100">
+                            <h4 class="font-bold text-lg text-gray-800 mb-2 uppercase tracking-wide text-xs text-pink-700">The Solution</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                A mobile-first PWA that can be installed on any device for a native app experience without the overhead of a traditional mobile app. The first version fits my wife's needs perfectly, including a few delightful moments, such as the opening animation and Focus view.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Install CTA Drawer Section -->
+                    <div class="border border-pink-700/20 bg-pink-50/50 p-8 rounded-3xl flex flex-col md:flex-row items-center gap-8 shadow-sm">
+                        <div class="flex-1 space-y-3">
+                            <h3 class="text-2xl font-black text-gray-800">Install the Demo on Your Device</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                                This app is built as a Progressive Web App (PWA). Access the link directly on your phone and tap <strong>Add to Home Screen</strong> to install it for a full screen native app experience.
+                            </p>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                <b>Note:</b> This is a demo-only version of the app. All changes you make will only save locally. <a href="#contact" class="text-pink-700 hover:text-pink-400 transition font-bold no-underline" style="text-decoration: none;">Contact me</a> directly if you want to sign up for a fully-functional version.
+                            </p>
+                            <!-- Mobile Direct Link (hidden on desktop) -->
+                            <a href="https://mslilymckay.github.io/the-stacks-demo/" target="_blank" class="inline-block md:hidden bg-pink-700 text-white font-bold text-sm uppercase tracking-wider px-6 py-3 rounded-xl hover:brightness-110 transition shadow-md mt-2">
+                                <i class="fas fa-mobile-screen-button mr-2"></i> Try the Mobile Demo
+                            </a>
+                        </div>
+                        
+                        <!-- Desktop QR Code (hidden on mobile) -->
+                        <div class="hidden md:flex flex-col items-center bg-white p-4 border border-pink-100 rounded-2xl shadow-sm flex-shrink-0">
+                            <img src="stacks-qr.png" alt="QR Code to Install The Stacks Demo" class="w-32 h-32 mb-2" />
+                            <span class="text-[9px] text-pink-700 font-bold mt-2 uppercase tracking-widest text-center">Scan to Open</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    <!-- Contact Section -->
+    <div id="global-contact"></div>
+
+    <!-- Footer -->
+    <footer id="global-footer"></footer>
+    </body>
+
+    <!-- Scripts -->
+    <script src="script.js?v=1.0.5"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const startBtn = document.getElementById('start-demo-btn');
+            const overlay = document.getElementById('demo-overlay');
+            const iframe = document.getElementById('demo-iframe');
+
+            if (startBtn && overlay && iframe) {
+                startBtn.addEventListener('click', () => {
+                    // 1. Set src to start loading (triggers the app loading/MP4 immediately)
+                    iframe.src = iframe.getAttribute('data-src');
+
+                    // 2. Transition overlay and iframe opacity immediately
+                    overlay.classList.add('opacity-0');
+                    overlay.style.pointerEvents = 'none';
+                    iframe.classList.remove('opacity-0');
+                    iframe.classList.add('z-10');
+
+                    // 3. Remove overlay from DOM once fade transition is complete
+                    overlay.addEventListener('transitionend', () => {
+                        overlay.remove();
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
