@@ -201,6 +201,17 @@
             flex-shrink: 0;
         }
 
+        /* Fullscreen mockup modifier */
+        .mockup-fullscreen {
+          position: fixed !important;
+          top: 50% !important;
+          left: 50% !important;
+          transform: translate(-50%, -50%) !important;
+          height: 95vh !important;
+          z-index: 100 !important;
+          margin: 0 !important;
+        }
+
         /* Prevent iframe from intercepting scroll events when page is scrolling */
         body.is-scrolling iframe {
             pointer-events: none !important;
@@ -306,4 +317,4 @@
         .zoom-close:hover {
             color: var(--trans-pink);
             transform: rotate(90deg);
-        }
+        }
