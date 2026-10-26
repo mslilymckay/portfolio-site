@@ -187,11 +187,15 @@
           const mockup = document.getElementById('phone-mockup');
           const backdrop = document.getElementById('blur-backdrop');
           const closeBtn = document.getElementById('close-demo-btn');
+          const placeholder = document.getElementById('mockup-placeholder');
         
           if (startBtn && overlay && iframe && mockup) {
             startBtn.addEventListener('click', () => {
               iframe.src = iframe.getAttribute('data-src');
         
+              // Show placeholder to hold the grid space
+              if (placeholder) placeholder.classList.remove('hidden');
+                
               backdrop.classList.remove('opacity-0', 'pointer-events-none');
               mockup.classList.add('mockup-fullscreen');
               
