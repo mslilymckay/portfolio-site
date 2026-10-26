@@ -206,9 +206,10 @@
           position: fixed !important;
           top: 50% !important;
           left: 50% !important;
-          transform: translate(-50%, -50%) !important;
+          transform: translate(-50%, -50%) scale(1) !important;
           height: 95vh !important;
-          z-index: 100 !important;
+          max-height: 900px !important;
+          z-index: 101 !important;
           margin: 0 !important;
         }
 
