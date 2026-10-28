@@ -25,18 +25,18 @@
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="AI Fluency Game | Lily McKay" />
+        <meta property="og:title" content="Acme Flux AI Coach | Lily McKay" />
         <meta property="og:description" content="Game-Based Micro-Learning Demo by Lily McKay, Transformation Architect." />
         <meta property="og:image" content="icon.png" />
     </head>
     
     <body>
         <!-- Fullscreen blurred backdrop -->
-        <div id="blur-backdrop" class="fixed inset-0 bg-white/60 backdrop-blur-md z-[100] opacity-0 pointer-events-none transition-opacity duration-500">
+        <div id="blur-backdrop" class="fixed inset-0 bg-white/60 backdrop-blur-md z-[100] opacity-0 pointer-events-none transition-opacity duration-500 cursor-pointer">
         </div>
 
         <!-- Close button -->
-        <button id="close-demo-btn" class="absolute top-6 right-6 w-12 h-12 bg-gray-800 text-white rounded-full flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-500 z-[102] hover:bg-pink-700 cursor-pointer shadow-xl">
+        <button id="close-demo-btn" class="fixed top-6 right-6 w-12 h-12 bg-gray-800 text-white rounded-full flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-500 z-[110] hover:bg-pink-700 cursor-pointer shadow-xl">
           <i class="fas fa-times text-xl"></i>
         </button>
 
@@ -52,7 +52,7 @@
                 </span>
                 <h1 class="text-4xl md:text-6xl font-black mt-4 mb-6 text-gray-800">AI Fluency at <i>Acme&nbsp;Flux</i></h1>
                 <p class="text-lg md:text-xl text-gray-600 font-light max-w-2xl mx-auto leading-relaxed">
-                    Here’s how I vibe coded a React/Vite Progressive Web App (PWA) designed to help users build AI literacy without actually touching an AI prompt box. This limited prototype showcases a single user journey designed to help learners understand the basics of prompt engineering. Check it out!
+                    Here’s how I vibe coded a React + Vite Progressive Web App (PWA) designed to help users build AI literacy without ever touching an AI prompt box. This interactive prototype showcases a focused learner journey designed to teach the fundamentals of prompt engineering through hands-on practice. Check it out!
                 </p>
             </div>
         </section>
@@ -62,13 +62,13 @@
             <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-start">
                 
                 <!-- Phone mockup container -->
-                <div class="lg:col-span-5 lg:sticky lg:top-24 flex justify-center lg:justify-start relative z-50">
+                <div id="phone-mockup-wrapper" class="lg:col-span-5 lg:sticky lg:top-24 flex justify-center lg:justify-start relative">
                   
                 <!-- NEW: Placeholder to prevent layout collapse -->
                     <div id="mockup-placeholder" class="hidden w-[340px] h-[690px] lg:h-[85vh] lg:max-h-[900px] lg:min-h-[560px] lg:aspect-[375/680] lg:w-auto flex-shrink-0"></div>
                     
                 <!-- Added id="phone-mockup" and a transition class below -->
-                <div id="phone-mockup" class="relative border-gray-800 bg-gray-800 border-[12px] rounded-[2.5rem] w-[340px] h-[690px] lg:h-[85vh] lg:max-h-[900px] lg:min-h-[560px] lg:aspect-[375/680] lg:w-auto shadow-2xl overflow-hidden flex-shrink-0 transition-all duration-700 ease-in-out z-50">
+                <div id="phone-mockup" class="relative border-gray-800 bg-gray-800 border-[12px] rounded-[2.5rem] w-[340px] h-[690px] lg:h-[85vh] lg:max-h-[900px] lg:min-h-[560px] lg:aspect-[375/680] lg:w-auto shadow-2xl overflow-hidden flex-shrink-0">
                     
                     <!-- Notch -->
                     <div class="absolute top-0 left-1/2 transform -translate-x-1/2 h-5 w-32 bg-gray-800 rounded-b-xl z-30 flex justify-center items-center">
@@ -85,14 +85,14 @@
                             <div class="absolute bottom-10 right-10 w-24 h-24 bg-pink-300/20 rounded-full blur-xl pointer-events-none"></div>
                             
                             <div class="w-16 h-16 rounded-2xl bg-pink-700/10 flex items-center justify-center mb-4 border border-pink-700/20 shadow-sm relative z-10">
-                                <i class="fas fa-book-open text-2xl text-pink-700"></i>
+                                <i class="fas fa-bolt text-2xl text-pink-700"></i>
                             </div>
                             
                             <h3 class="text-xl font-bold text-gray-800 mb-2 uppercase tracking-wide relative z-10" style="font-family: 'Tenor Sans', sans-serif;">
                                 Acme Flux AI Coach
                             </h3>
                             <p class="text-xs text-gray-500 mb-6 max-w-[200px] leading-relaxed relative z-10">
-                                Lightweight game-based micro-learning app optimized to increase AI fluency without every touching an AI model.
+                                Lightweight game-based micro-learning app optimized to increase AI fluency without ever touching an AI model.
                             </p>
                             
                             <button id="start-demo-btn" class="relative z-10 bg-pink-700 text-white font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-xl border border-transparent hover:bg-pink-400 hover:text-gray-800 hover:border-pink-400 active:scale-95 transition-all shadow-md flex items-center gap-2 cursor-pointer">
@@ -117,29 +117,48 @@
                             Several friends and colleagues are still reluctant to try AI, often because they don't feel confident with the basic concepts. So I built a micro-learning prototype (deployed as a Progressive Web App) called <i>Acme&nbsp;Flux&nbsp;AI&nbsp;Coach</i> to help bridge that gap.
                         </p>
                         <p class="text-gray-600 leading-relaxed text-lg mb-4">
-                            This is a partial prototype to demonstrate how learners can grasp high-level AI concepts without every touching a prompt box. It relies on concepts like micro interactions and real-time gamification to engage learners in their own time.
+                            This is an interactive proof-of-concept demonstrating how learners can grasp high-level AI concepts without ever touching a prompt box. It relies on intuitive micro-interactions and real-time gamification to engage learners at their own pace.
                         </p>
                         <p class="text-gray-600 leading-relaxed text-lg mb-4">
-                            Through this process I jumped to the next level of vibe coding by expanding to a React/Vite architecture, experimenting with advanced interactions, and continuing to use Antigravity to automate local SDLC workflows to audit code, implement complex features, and deploy to production.
+                            Through this process, I jumped to the next level of vibe coding by expanding to a modern React + Vite architecture, experimenting with advanced interactions, and continuing to use Antigravity to automate local SDLC workflows to audit code, implement complex features, and deploy to production.
                         </p>
                     </div>
 
                     <!-- Storytelling Cards -->
                     <div class="grid sm:grid-cols-2 gap-6">
-                        <div class="bg-[#f3f4f6] p-6 rounded-2xl border border-gray-100">
-                            <h4 class="font-bold text-lg text-gray-800 mb-2 uppercase tracking-wide text-xs text-pink-700">
-                                Requirements
-                            </h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">
-                                A quick, fun game-based micro-learning POC to teach foundational AI concepts. Must include five progressive levels of application, gamified elements, and offline caching.
-                            </p>
+                        <div class="bg-[#f3f4f6] p-6 rounded-2xl border border-gray-100 flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-bold text-lg text-gray-800 mb-2 uppercase tracking-wide text-xs text-pink-700">
+                                    Requirements &amp; Goals
+                                </h4>
+                                <p class="text-sm text-gray-600 leading-relaxed">
+                                    A fast, engaging game-based micro-learning experience to demystify core AI concepts. Must include progressive skill tiers, gamified reward elements, offline PWA caching, and hands-on interactions that teach prompt structuring without cognitive overload.
+                                </p>
+                            </div>
                         </div>
-                        <div class="bg-[#f3f4f6] p-6 rounded-2xl border border-gray-100">
-                            <h4 class="font-bold text-lg text-gray-800 mb-2 uppercase tracking-wide text-xs text-pink-700">The Solution</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">
-                                A React/Vite PWA that can be installed on any device for a native app experience without the overhead of a traditional mobile app or SCORM module. This POC demo includes three interaction types: drag-and-drop matching, red pen strike-through, and resource selection.
-                                <br/>
-                                <b>Note:</b> This is a partial prototype demonstrating the learner journey from solving cases and unlocking their resources to earning XP and a badge for completing Level 2.
+                        <div class="bg-[#f3f4f6] p-6 rounded-2xl border border-gray-100 flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-bold text-lg text-gray-800 mb-2 uppercase tracking-wide text-xs text-pink-700">
+                                    The Solution &amp; Stack
+                                </h4>
+                                <p class="text-sm text-gray-600 leading-relaxed">
+                                    A mobile-first PWA built with <strong>React + Vite</strong> for native app performance without app store or LMS overhead. Features three custom interaction models: drag-and-drop concept matching, red-pen strike-through editing, and contextual resource selection.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Prototype Scope Callout Banner -->
+                    <div class="bg-pink-50/60 border border-pink-700/15 rounded-2xl p-6 flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-pink-700/10 text-pink-700 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-flask text-base"></i>
+                        </div>
+                        <div class="text-sm space-y-1">
+                            <h5 class="font-bold text-gray-800 uppercase tracking-wider text-xs text-pink-700">
+                                Prototype Scope &amp; Early Demonstration
+                            </h5>
+                            <p class="text-gray-600 leading-relaxed text-sm">
+                                This live demo is a functional <strong>vertical slice prototype</strong> showcasing the complete Level&nbsp;2 learner journey (solving investigative cases, unlocking resources, and earning XP badges). All session data persists locally on your device. Full multi-tier progression, user account sync, and additional levels are currently in active design.
                             </p>
                         </div>
                     </div>
@@ -181,39 +200,220 @@
     <script src="script.js?v=1.0.5"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-          const startBtn = document.getElementById('start-demo-btn');
-          const overlay = document.getElementById('demo-overlay');
-          const iframe = document.getElementById('demo-iframe');
-          const mockup = document.getElementById('phone-mockup');
-          const backdrop = document.getElementById('blur-backdrop');
-          const closeBtn = document.getElementById('close-demo-btn');
-          const placeholder = document.getElementById('mockup-placeholder');
-        
-          if (startBtn && overlay && iframe && mockup) {
-            startBtn.addEventListener('click', () => {
-              iframe.src = iframe.getAttribute('data-src');
-        
-              // Show placeholder to hold the grid space
-              if (placeholder) placeholder.classList.remove('hidden');
-                
-              backdrop.classList.remove('opacity-0', 'pointer-events-none');
-              mockup.classList.add('mockup-fullscreen');
-              
-              overlay.classList.add('opacity-0');
-              overlay.style.pointerEvents = 'none';
-              
-              iframe.classList.remove('opacity-0');
-              iframe.classList.add('z-[111]');
-              
-              closeBtn.classList.remove('opacity-0', 'pointer-events-none');
+            const startBtn = document.getElementById('start-demo-btn');
+            const overlay = document.getElementById('demo-overlay');
+            const iframe = document.getElementById('demo-iframe');
+            const mockup = document.getElementById('phone-mockup');
+            const mockupWrapper = document.getElementById('phone-mockup-wrapper');
+            const backdrop = document.getElementById('blur-backdrop');
+            const closeBtn = document.getElementById('close-demo-btn');
+            const placeholder = document.getElementById('mockup-placeholder');
+            const globalHeader = document.getElementById('global-header');
+
+            if (!startBtn || !overlay || !iframe || !mockup || !backdrop || !closeBtn) return;
+
+            let isFullscreen = false;
+            let isAnimating = false;
+
+            function getFullscreenTarget() {
+                const padding = 24;
+                const maxH = Math.min(window.innerHeight - padding * 2, 880);
+                const aspectRatio = 375 / 680;
+                let targetH = maxH;
+                let targetW = targetH * aspectRatio;
+
+                if (targetW > window.innerWidth - padding * 2) {
+                    targetW = window.innerWidth - padding * 2;
+                    targetH = targetW / aspectRatio;
+                }
+
+                return {
+                    top: (window.innerHeight - targetH) / 2,
+                    left: (window.innerWidth - targetW) / 2,
+                    width: targetW,
+                    height: targetH
+                };
+            }
+
+            function openDemo() {
+                if (isFullscreen || isAnimating) return;
+                isAnimating = true;
+                isFullscreen = true;
+
+                // Load iframe src on demand
+                if (!iframe.src || iframe.src === 'about:blank' || iframe.src === window.location.href) {
+                    iframe.src = iframe.getAttribute('data-src');
+                }
+
+                // 1. Measure initial starting rectangle on screen
+                const startRect = mockup.getBoundingClientRect();
+
+                // 2. Reserve space in document grid so layout does not collapse
+                if (placeholder) {
+                    placeholder.style.width = startRect.width + 'px';
+                    placeholder.style.height = startRect.height + 'px';
+                    placeholder.classList.remove('hidden');
+                }
+
+                // 3. Elevate wrapper stacking context above header (z-60) and backdrop (z-100)
+                if (mockupWrapper) {
+                    mockupWrapper.style.zIndex = '101';
+                }
+
+                // If starting place is tucked under the nav bar, keep header elevated so mockup slides out smoothly
+                const headerBottom = globalHeader ? globalHeader.getBoundingClientRect().bottom : 80;
+                if (globalHeader && startRect.top < headerBottom) {
+                    globalHeader.style.zIndex = '105';
+                }
+
+                // 4. Snap mockup to fixed coordinates matching its exact starting visual position
+                mockup.style.position = 'fixed';
+                mockup.style.top = startRect.top + 'px';
+                mockup.style.left = startRect.left + 'px';
+                mockup.style.width = startRect.width + 'px';
+                mockup.style.height = startRect.height + 'px';
+                mockup.style.margin = '0';
+                mockup.style.maxWidth = 'none';
+                mockup.style.maxHeight = 'none';
+                mockup.style.minHeight = '0';
+                mockup.style.transform = 'none';
+                mockup.style.transition = 'none';
+                mockup.style.zIndex = '101';
+
+                // 5. Fade in backdrop & close button, fade out overlay, fade in iframe
+                backdrop.classList.remove('opacity-0', 'pointer-events-none');
+                closeBtn.classList.remove('opacity-0', 'pointer-events-none');
+                overlay.classList.add('opacity-0');
+                overlay.style.pointerEvents = 'none';
+                iframe.classList.remove('opacity-0');
+                iframe.classList.add('z-[111]');
+                document.body.style.overflow = 'hidden';
+
+                // Force reflow so initial fixed styles are registered before animation starts
+                mockup.offsetHeight;
+
+                // 6. Smooth single-direction linear motion to center
+                const target = getFullscreenTarget();
+                const animDuration = 600;
+                const easing = 'cubic-bezier(0.16, 1, 0.3, 1)';
+
+                mockup.style.transition = `top ${animDuration}ms ${easing}, left ${animDuration}ms ${easing}, width ${animDuration}ms ${easing}, height ${animDuration}ms ${easing}, box-shadow ${animDuration}ms ease`;
+                mockup.style.top = target.top + 'px';
+                mockup.style.left = target.left + 'px';
+                mockup.style.width = target.width + 'px';
+                mockup.style.height = target.height + 'px';
+                mockup.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.5)';
+
+                setTimeout(() => {
+                    isAnimating = false;
+                    if (globalHeader) {
+                        globalHeader.style.zIndex = '';
+                    }
+                }, animDuration);
+            }
+
+            function closeDemo() {
+                if (!isFullscreen || isAnimating) return;
+                isAnimating = true;
+
+                // Fade out backdrop and close button
+                backdrop.classList.add('opacity-0', 'pointer-events-none');
+                closeBtn.classList.add('opacity-0', 'pointer-events-none');
+
+                // Smoothly restore the Start Demo overlay and fade out iframe
+                overlay.classList.remove('opacity-0');
+                overlay.style.pointerEvents = 'auto';
+                iframe.classList.add('opacity-0');
+                iframe.classList.remove('z-[111]');
+
+                // Destination is the placeholder position currently on screen
+                const returnRect = placeholder ? placeholder.getBoundingClientRect() : mockup.getBoundingClientRect();
+                const animDuration = 500;
+
+                // If returning to a position partially under the nav bar, elevate header so mockup slides UNDER it naturally
+                const currentHeaderBottom = globalHeader ? globalHeader.getBoundingClientRect().bottom : 80;
+                if (globalHeader && returnRect.top < currentHeaderBottom) {
+                    globalHeader.style.zIndex = '105';
+                }
+                const easing = 'cubic-bezier(0.25, 1, 0.5, 1)';
+
+                // Animate directly back to starting position in one smooth motion
+                mockup.style.transition = `top ${animDuration}ms ${easing}, left ${animDuration}ms ${easing}, width ${animDuration}ms ${easing}, height ${animDuration}ms ${easing}, box-shadow ${animDuration}ms ease`;
+                mockup.style.top = returnRect.top + 'px';
+                mockup.style.left = returnRect.left + 'px';
+                mockup.style.width = returnRect.width + 'px';
+                mockup.style.height = returnRect.height + 'px';
+                mockup.style.boxShadow = '';
+
+                const finalizeClose = () => {
+                    mockup.removeEventListener('transitionend', handleTransitionEnd);
+                    mockup.style.position = '';
+                    mockup.style.top = '';
+                    mockup.style.left = '';
+                    mockup.style.width = '';
+                    mockup.style.height = '';
+                    mockup.style.margin = '';
+                    mockup.style.maxWidth = '';
+                    mockup.style.maxHeight = '';
+                    mockup.style.minHeight = '';
+                    mockup.style.transform = '';
+                    mockup.style.zIndex = '';
+                    mockup.style.transition = '';
+                    mockup.style.boxShadow = '';
+
+                    if (mockupWrapper) {
+                        mockupWrapper.style.zIndex = '';
+                    }
+
+                    if (globalHeader) {
+                        globalHeader.style.zIndex = '';
+                    }
+
+                    if (placeholder) {
+                        placeholder.classList.add('hidden');
+                        placeholder.style.width = '';
+                        placeholder.style.height = '';
+                    }
+
+                    // Reset iframe so audio/game stops and starts fresh on next open
+                    iframe.src = 'about:blank';
+
+                    document.body.style.overflow = '';
+                    isFullscreen = false;
+                    isAnimating = false;
+                };
+
+                const handleTransitionEnd = (e) => {
+                    if (e.target === mockup && (e.propertyName === 'top' || e.propertyName === 'height')) {
+                        finalizeClose();
+                    }
+                };
+
+                mockup.addEventListener('transitionend', handleTransitionEnd);
+                setTimeout(() => {
+                    if (isAnimating) finalizeClose();
+                }, animDuration + 50);
+            }
+
+            startBtn.addEventListener('click', openDemo);
+            closeBtn.addEventListener('click', closeDemo);
+            backdrop.addEventListener('click', closeDemo);
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && isFullscreen) {
+                    closeDemo();
+                }
             });
-        
-            closeBtn.addEventListener('click', () => {
-              backdrop.classList.add('opacity-0', 'pointer-events-none');
-              mockup.classList.remove('mockup-fullscreen');
-              closeBtn.classList.add('opacity-0', 'pointer-events-none');
+
+            window.addEventListener('resize', () => {
+                if (!isFullscreen || isAnimating) return;
+                const target = getFullscreenTarget();
+                mockup.style.transition = 'none';
+                mockup.style.top = target.top + 'px';
+                mockup.style.left = target.left + 'px';
+                mockup.style.width = target.width + 'px';
+                mockup.style.height = target.height + 'px';
             });
-          }
         });
     </script>
 </html>

@@ -201,18 +201,6 @@
             flex-shrink: 0;
         }
 
-        /* Fullscreen mockup modifier */
-        .mockup-fullscreen {
-          position: fixed !important;
-          top: 50% !important;
-          left: 50% !important;
-          transform: translate(-50%, -50%) scale(1) !important;
-          height: 95vh !important;
-          max-height: 900px !important;
-          z-index: 101 !important;
-          margin: 0 !important;
-        }
-
         /* Prevent iframe from intercepting scroll events when page is scrolling */
         body.is-scrolling iframe {
             pointer-events: none !important;
@@ -226,7 +214,7 @@
                 overflow: hidden;
             }
             .zoomable-container::after {
-                content: '\f00e';
+                content: '00e';
                 font-family: 'Font Awesome 6 Free', sans-serif;
                 font-weight: 900;
                 position: absolute;
@@ -319,3 +307,4 @@
             color: var(--trans-pink);
             transform: rotate(90deg);
         }
+

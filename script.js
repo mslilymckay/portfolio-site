@@ -97,13 +97,15 @@ function initGlobalElements() {
 
         const overviewPrefix = isHome ? "" : "./";
 
-        const dropdownStacksClass = page === "the-stacks-demo.html" ? "bg-pink-50 text-pink-700 font-bold" : "text-gray-700 hover:bg-pink-50 hover:text-pink-700";
-        const dropdownSimClass = page === "micro-learning.html" ? "bg-pink-50 text-pink-700 font-bold" : "text-gray-700 hover:bg-pink-50 hover:text-pink-700";
         const dropdownNewsClass = page === "news-case-study.html" ? "bg-pink-50 text-pink-700 font-bold" : "text-gray-700 hover:bg-pink-50 hover:text-pink-700";
+        const dropdownCoachClass = page === "micro-learning.html" ? "bg-pink-50 text-pink-700 font-bold" : "text-gray-700 hover:bg-pink-50 hover:text-pink-700";
+        const dropdownSimClass = page === "micro-simulation-demo.html" ? "bg-pink-50 text-pink-700 font-bold" : "text-gray-700 hover:bg-pink-50 hover:text-pink-700";
+        const dropdownStacksClass = page === "the-stacks-demo.html" ? "bg-pink-50 text-pink-700 font-bold" : "text-gray-700 hover:bg-pink-50 hover:text-pink-700";
 
-        const mobileStacksClass = page === "the-stacks-demo.html" ? "text-pink-400 font-bold" : "text-pink-700 hover:text-pink-400 font-bold";
-        const mobileSimClass = page === "micro-learning.html" ? "text-pink-400 font-bold" : "text-pink-700 hover:text-pink-400 font-bold";
         const mobileNewsClass = page === "news-case-study.html" ? "text-pink-400 font-bold" : "text-pink-700 hover:text-pink-400 font-bold";
+        const mobileCoachClass = page === "micro-learning.html" ? "text-pink-400 font-bold" : "text-pink-700 hover:text-pink-400 font-bold";
+        const mobileSimClass = page === "micro-simulation-demo.html" ? "text-pink-400 font-bold" : "text-pink-700 hover:text-pink-400 font-bold";
+        const mobileStacksClass = page === "the-stacks-demo.html" ? "text-pink-400 font-bold" : "text-pink-700 hover:text-pink-400 font-bold";
 
         headerEl.innerHTML = `
         <div class="trans-motif w-full m-0 p-0"></div>
@@ -137,7 +139,8 @@ function initGlobalElements() {
                         <div class="absolute top-full left-0 hidden group-hover:block pt-2 z-50">
                             <div class="w-64 bg-white border border-gray-100 rounded-xl shadow-xl py-2">
                                 <a href="news-case-study.html" class="block px-4 py-2 text-[11px] ${dropdownNewsClass} transition uppercase tracking-wider" style="text-decoration: none;">AI Workflow Automation</a>
-                                <a href="micro-learning.html" class="block px-4 py-2 text-[11px] ${dropdownSimClass} transition uppercase tracking-wider" style="text-decoration: none;">AI Fluency Game</a>
+                                <a href="micro-learning.html" class="block px-4 py-2 text-[11px] ${dropdownCoachClass} transition uppercase tracking-wider" style="text-decoration: none;">Acme Flux AI Coach</a>
+                                <a href="micro-simulation-demo.html" class="block px-4 py-2 text-[11px] ${dropdownSimClass} transition uppercase tracking-wider" style="text-decoration: none;">Rapid Simulation Development</a>
                                 <a href="the-stacks-demo.html" class="block px-4 py-2 text-[11px] ${dropdownStacksClass} transition uppercase tracking-wider" style="text-decoration: none;">Book-Tracking App</a>
                             </div>
                         </div>
@@ -169,7 +172,8 @@ function initGlobalElements() {
                     <span class="block w-full ${isHome ? 'text-gray-800 opacity-60' : 'text-pink-400'} font-bold text-xs uppercase tracking-wider">Case Studies</span>
                     <div class="pl-4 space-y-2 border-l-2 ${isHome ? 'border-pink-100' : 'border-pink-300'}">
                         <a href="news-case-study.html" onclick="toggleMenu()" class="block w-full ${mobileNewsClass} text-base tracking-widest uppercase" style="text-decoration: none;">AI Workflow Automation</a>
-                        <a href="micro-learning.html" onclick="toggleMenu()" class="block w-full ${mobileSimClass} text-base tracking-widest uppercase" style="text-decoration: none;">AI Fluency Game</a>
+                        <a href="micro-learning.html" onclick="toggleMenu()" class="block w-full ${mobileCoachClass} text-base tracking-widest uppercase" style="text-decoration: none;">Acme Flux AI Coach</a>
+                        <a href="micro-simulation-demo.html" onclick="toggleMenu()" class="block w-full ${mobileSimClass} text-base tracking-widest uppercase" style="text-decoration: none;">Rapid Simulation Development</a>
                         <a href="the-stacks-demo.html" onclick="toggleMenu()" class="block w-full ${mobileStacksClass} text-base tracking-widest uppercase" style="text-decoration: none;">Book-Tracking App</a>
                     </div>
                 </div>
