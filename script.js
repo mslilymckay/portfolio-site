@@ -299,7 +299,7 @@ window.addEventListener('scroll', () => {
     // 1. Manage backToTop visibility
     const btt = document.getElementById('backToTop');
     if (btt) {
-        const sections = ['identity', 'stacks-case-study', 'case-study-assets', 'simulation-case-study'];
+        const sections = ['identity', 'case-studies', 'stacks-case-study', 'case-study-assets', 'simulation-case-study'];
         const shouldShow = sections.some(sectionId => {
             const section = document.getElementById(sectionId);
             return section && window.scrollY > section.offsetTop - 200;
@@ -332,4 +332,15 @@ function toggleTimelineCard(cardElement) {
             chevron.classList.remove('rotate-180');
         }
     }
+}
+
+
+// Filmstrip Scroll Controls
+function scrollFilmstrip(direction) {
+    const track = document.getElementById('filmstrip-track');
+    if (!track) return;
+    const card = track.querySelector('.filmstrip-card');
+    const cardWidth = card ? card.offsetWidth : 380;
+    const scrollAmount = (cardWidth + 32) * (direction === 'left' ? -1 : 1);
+    track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
 }

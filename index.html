@@ -48,7 +48,10 @@
                 <p class="text-lg md:text-2xl text-pink-50 mb-12 max-w-4xl mx-auto leading-relaxed font-light">
                     15+ years of bridging executive vision and employee reality, creating people-centric learning, change, and engagement programs through a UX lens to drive AI adoption and leadership alignment.
                 </p>
-                <a href="#contact" class="inline-block bg-white text-pink-700 px-10 py-5 rounded-xl font-black text-sm uppercase tracking-widest hover:bg-pink-50 transition shadow-2xl">Let's Connect</a>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-8">
+                    <a href="#case-studies" class="w-64 inline-flex items-center justify-center bg-white text-pink-700 py-5 rounded-xl font-black text-sm uppercase tracking-widest hover:bg-pink-50 transition shadow-2xl">Case Studies</a>
+                    <a href="#contact" class="w-64 inline-flex items-center justify-center bg-white text-pink-700 py-5 rounded-xl font-black text-sm uppercase tracking-widest hover:bg-pink-50 transition shadow-2xl">Let's Connect</a>
+                </div>
             </div>
             <div class="hidden md:block absolute bottom-12 left-1/2 text-white/30 text-3xl bounce cursor-pointer">
                 <a href="#identity"><i class="fas fa-chevron-down text-pink-100"></i></a>
@@ -303,11 +306,71 @@
             </div>
         </section>
 
+    <!-- Case Studies Section -->
+    <section id="case-studies" class="py-24 bg-gray-800 text-white border-t border-gray-700/50">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-14 reveal">
+                <h2 class="text-pink-400 font-black text-xs uppercase tracking-[0.3em] mb-3">Portfolio Highlights</h2>
+                <h3 class="text-4xl md:text-5xl font-black text-white">Featured Case Studies</h3>
+                <p class="text-gray-400 mt-3 text-base md:text-lg font-light max-w-2xl mx-auto">Interactive demos, automated workflows, custom user experiences.</p>
+            </div>
+
+            <!-- 4 Case Studies Grid (All fit on one line on desktop) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch reveal">
+                
+                <!-- Card 1: Newsfeed Workflow -->
+                <a href="news-case-study.html" class="group bg-white/5 border border-white/10 hover:border-pink-500/80 hover:bg-white/10 p-7 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between" style="text-decoration: none;">
+                    <div>
+                        <div class="mb-4">
+                            <span class="inline-block bg-pink-500/15 text-pink-300 text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border border-pink-400/30 group-hover:bg-pink-500/25 group-hover:border-pink-400/50 transition">AI Automation</span>
+                        </div>
+                        <h4 class="text-xl font-black text-white mb-2 group-hover:text-pink-300 transition leading-snug">Newsfeed Workflow</h4>
+                        <p class="text-gray-300 text-xs leading-relaxed font-normal">Agentic AI pipeline automating real-time news ingestion, synthesis, and multi-channel distribution.</p>
+                    </div>
+                </a>
+
+                <!-- Card 2: Acme Flux AI Coach -->
+                <a href="micro-learning.html" class="group bg-white/5 border border-white/10 hover:border-pink-500/80 hover:bg-white/10 p-7 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between" style="text-decoration: none;">
+                    <div>
+                        <div class="mb-4">
+                            <span class="inline-block bg-pink-500/15 text-pink-300 text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border border-pink-400/30 group-hover:bg-pink-500/25 group-hover:border-pink-400/50 transition">Micro-Learning POC</span>
+                        </div>
+                        <h4 class="text-xl font-black text-white mb-2 group-hover:text-pink-300 transition leading-snug">Acme Flux AI Coach</h4>
+                        <p class="text-gray-300 text-xs leading-relaxed font-normal">Game-based mobile enablement tool teaching fundamental prompting concepts through situational practice.</p>
+                    </div>
+                </a>
+
+                <!-- Card 3: Software Simulation -->
+                <a href="micro-simulation-demo.html" class="group bg-white/5 border border-white/10 hover:border-pink-500/80 hover:bg-white/10 p-7 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between" style="text-decoration: none;">
+                    <div>
+                        <div class="mb-4">
+                            <span class="inline-block bg-pink-500/15 text-pink-300 text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border border-pink-400/30 group-hover:bg-pink-500/25 group-hover:border-pink-400/50 transition">Rapid Development</span>
+                        </div>
+                        <h4 class="text-xl font-black text-white mb-2 group-hover:text-pink-300 transition leading-snug">Software Simulation</h4>
+                        <p class="text-gray-300 text-xs leading-relaxed font-normal">Interactive walkthroughs and branching decision scenarios developed for rapid software enablement.</p>
+                    </div>
+                </a>
+
+                <!-- Card 4: The Stacks -->
+                <a href="the-stacks-demo.html" class="group bg-white/5 border border-white/10 hover:border-pink-500/80 hover:bg-white/10 p-7 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between" style="text-decoration: none;">
+                    <div>
+                        <div class="mb-4">
+                            <span class="inline-block bg-pink-500/15 text-pink-300 text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border border-pink-400/30 group-hover:bg-pink-500/25 group-hover:border-pink-400/50 transition">Reading App UX</span>
+                        </div>
+                        <h4 class="text-xl font-black text-white mb-2 group-hover:text-pink-300 transition leading-snug">The Stacks</h4>
+                        <p class="text-gray-300 text-xs leading-relaxed font-normal">Bespoke progressive web app focused on cozy user engagement, custom bookshelf sorting, and personal reading metrics.</p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <div id="global-contact"></div>
 
     <!-- Footer -->
     <footer id="global-footer"></footer>
     <!-- Script -->
-        <script src="script.js?v=1.0.8"></script>
+        <script src="script.js?v=1.0.9"></script>
 </html>
